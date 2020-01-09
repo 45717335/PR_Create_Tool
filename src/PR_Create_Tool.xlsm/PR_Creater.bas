@@ -32,18 +32,18 @@ mokc.Item("FL").Add "CUR_PR_NUM", "CUR_PR_NUM"
 
 
 
-'20181129 È¥³ı¹©Ó¦ÉÌÃû³ÆÖĞµÄÌØÊâ×Ö·û
+'20181129 å»é™¤ä¾›åº”å•†åç§°ä¸­çš„ç‰¹æ®Šå­—ç¬¦
 Dim mokc_manu As New OneKeyCls
 If ws_exist(Workbooks("PR_Create_Tool.xlsm"), "MANUFATURE") Then
 mokc_read_ws mokc_manu, Workbooks("PR_Create_Tool.xlsm").Worksheets("MANUFATURE"), 1, 1
 End If
-'20181129 È¥³ı¹©Ó¦ÉÌÃû³ÆÖĞµÄÌØÊâ×Ö·û
+'20181129 å»é™¤ä¾›åº”å•†åç§°ä¸­çš„ç‰¹æ®Šå­—ç¬¦
 
 
 'mokc_read_ws(mok
 
 '=======================
-'ÕÒµ½ÒÑ¾­´ò¿ªµÄ»úĞµ¸ú×Ù±í
+'æ‰¾åˆ°å·²ç»æ‰“å¼€çš„æœºæ¢°è·Ÿè¸ªè¡¨
 Dim b_c As Boolean
 Dim str1 As String
 Dim str2 As String
@@ -68,7 +68,7 @@ Dim ws_partsingle As Worksheet
 Dim j As Long
 Dim j_last As Long
 
-'¶ÁÈ¡PartSingleÀïÃæµÄµ¥Ôª¸ñ
+'è¯»å–PartSingleé‡Œé¢çš„å•å…ƒæ ¼
 Dim POS As String
 Dim QTY As String
 Dim UNIT As String
@@ -87,7 +87,7 @@ Dim dbl_qty As Double
 
 
 
-'¶ÁÈ¡PartSingleÀïÃæµÄµ¥Ôª¸ñ
+'è¯»å–PartSingleé‡Œé¢çš„å•å…ƒæ ¼
 
 
 
@@ -102,28 +102,28 @@ Exit For
 End If
 Next
 If Not (wb_fl Is Nothing) Then
-Msgbox "Following list to create PR£º" & Chr(10) & wb_fl.Name
+Msgbox "Following list to create PRï¼š" & Chr(10) & wb_fl.Name
 If wb_fl.ReadOnly = True Then
 Msgbox "ReadOnly Following list Can Not create PR!"
 wb_fl.Close
 Exit Sub
 End If
 Else
-Msgbox "Please open following list in the first!£º CN.*Mechanics*Following.xlsm "
+Msgbox "Please open following list in the first!ï¼š CN.*Mechanics*Following.xlsm "
 Exit Sub
 End If
-'ÕÒµ½ÒÑ¾­´ò¿ªµÄ»úĞµ¸ú×Ù±í
+'æ‰¾åˆ°å·²ç»æ‰“å¼€çš„æœºæ¢°è·Ÿè¸ªè¡¨
 '=======================
 
 
 
-'20190226 ĞÂÔö¶ÁÈ¡BOMÖÁ PartSingle
+'20190226 æ–°å¢è¯»å–BOMè‡³ PartSingle
 If Read_Main_to_PS(wb_fl) = True Then
-'Èç¹û ÓĞ¶ÁÈ¡ÄÚÈİÔò£¬ÖÕÖ¹ ÖÆ×÷PR¹ı³Ì£¬ÈÃ¹¤³ÌÊ¦¼ì²é ´ÓMainÌí¼ÓÖÁPartSingleµÄÄÚÈİ
+'å¦‚æœ æœ‰è¯»å–å†…å®¹åˆ™ï¼Œç»ˆæ­¢ åˆ¶ä½œPRè¿‡ç¨‹ï¼Œè®©å·¥ç¨‹å¸ˆæ£€æŸ¥ ä»Mainæ·»åŠ è‡³PartSingleçš„å†…å®¹
 Exit Sub
 End If
 wb_fl.Save
-'20190226 ĞÂÔö¶ÁÈ¡BOMÖÁ PartSingle
+'20190226 æ–°å¢è¯»å–BOMè‡³ PartSingle
 
 
 
@@ -135,18 +135,18 @@ If Right(mokc.Item("FL").Item("FDN").Key, 1) <> "\" Then
 mokc.Item("FL").Item("FDN").Key = mokc.Item("FL").Item("FDN").Key & "\"
 End If
 '=======================
-'Checking  ÎÄ¼ş¼ĞÊÇ·ñ´æÔÚ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
+'Checking  æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
 fdn = mokc.Item("FL").Item("FDN").Key & "PAX_Mechanical&H&P"
 mokc.Item("FL").Item("FDN").Item("FDNPR").Key = fdn
 If mfso.folderexists(fdn) = False Then
 If Msgbox("Folder does not exist!:" & Chr(10) & fdn & Chr(10) & "Create press OK.", vbOKCancel) = vbOK Then
 mfso.CreateFolder fdn
-Msgbox "Folder to store PR was created! :" & Chr(10) & mokc.Item("FL").Item("FDN").Key & "PAX_Mechanical&H&P" & Chr(10) & "Please put a PR in that folder £¨Defalte  PR Number 0002£©"
+Msgbox "Folder to store PR was created! :" & Chr(10) & mokc.Item("FL").Item("FDN").Key & "PAX_Mechanical&H&P" & Chr(10) & "Please put a PR in that folder ï¼ˆDefalte  PR Number 0002ï¼‰"
 Else
 Exit Sub
 End If
 End If
-'Checking  ÎÄ¼ş¼ĞÊÇ·ñ´æÔÚ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
+'Checking  æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
 '=======================
 
 
@@ -207,11 +207,11 @@ mokc.Item("PR").Item("PRN_LAST").Key = s_PRN_LAST
 
 
 '=====================
-'¶ÁÈ¡ Part_single ±í¸ñ
-b_c = True ' b_c = True  Part_Single ¶ÁÈ¡³É¹¦£¬b_c = False  Part_Single ¶ÁÈ¡Ê§°Ü
+'è¯»å– Part_single è¡¨æ ¼
+b_c = True ' b_c = True  Part_Single è¯»å–æˆåŠŸï¼Œb_c = False  Part_Single è¯»å–å¤±è´¥
 mokc.Item("WS_PartSingle").Add "M_C_P", "M_C_P"
 'Record the pype: Controls or Mechanics or Pneumatics
-'²»´æÔÚ Parts_Single,Ê§°Ü
+'ä¸å­˜åœ¨ Parts_Single,å¤±è´¥
 If b_c Then
 If ws_exist(wb_fl, "Parts_Single") = False Then
 b_c = False
@@ -220,7 +220,7 @@ Else
 Set ws_partsingle = wb_fl.Worksheets("Parts_Single")
 End If
 End If
-'ÎŞ·¨ÅĞ¶ÏÊÇ »ú or µç or Æø Ê§°Ü
+'æ— æ³•åˆ¤æ–­æ˜¯ æœº or ç”µ or æ°” å¤±è´¥
 If b_c Then
 If InStr(wb_fl.Name, "Mechanics") > 0 Then
 mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Mechanics"
@@ -230,10 +230,10 @@ ElseIf InStr(wb_fl.Name, "Pneumatics") > 0 Then
 mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Pneumatics"
 Else
 b_c = False
-Msgbox wb_fl.Name & Chr(10) & "File name must contain one of £ºMechanics or  Controls or Pneumatics"
+Msgbox wb_fl.Name & Chr(10) & "File name must contain one of ï¼šMechanics or  Controls or Pneumatics"
 End If
 End If
-'ÅĞ¶Ï Part_Single ¸ñÊ½ÊÇ·ñÊÇÔ¤ÖÃ¸ñÊ½
+'åˆ¤æ–­ Part_Single æ ¼å¼æ˜¯å¦æ˜¯é¢„ç½®æ ¼å¼
 If b_c Then
 If mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Mechanics" Then
 
@@ -268,7 +268,7 @@ If b_c Then
 
 i_last = ws_partsingle.UsedRange.Rows(ws_partsingle.UsedRange.Rows.Count).row
 For i = 8 To i_last
-'¶ÁÈ¡ÊıÁ¿²»ÎªÁã£¬PA_Index Îª¿ÕµÄĞĞ
+'è¯»å–æ•°é‡ä¸ä¸ºé›¶ï¼ŒPA_Index ä¸ºç©ºçš„è¡Œ
 
 
 
@@ -283,12 +283,12 @@ TKID_STATION = Trim(ws_partsingle.Cells(i, CInt(mokc.Item("WS_PartSingle").Item(
 dbl_qty = 0
 Str_TO_Dbl QTY, dbl_qty
 If Not (dbl_qty > 0) Then
-Msgbox "Qty Must >0 £¬row number £º" & i
+Msgbox "Qty Must >0 ï¼Œrow number ï¼š" & i
 b_c = False
 End If
 If b_c Then
 If Len(OEM_NAME) = 0 Then
-Msgbox "Name of muaufature can not be empty  ro number £º" & i
+Msgbox "Name of muaufature can not be empty  ro number ï¼š" & i
 b_c = False
 End If
 
@@ -333,7 +333,7 @@ End If
 End If
 Next
 End If
-'¶ÁÈ¡ Part_single ±í¸ñ
+'è¯»å– Part_single è¡¨æ ¼
 '=====================
 
 If b_c = False Then
@@ -346,19 +346,19 @@ End If
 
 
 '=====================
-'¼ì²éPR Ä£°åÊÇ·ñ´æÔÚ£¬²»´æÔÚ¿½±´Ò»·İµ½µ±Ç°Ä¿Â¼
+'æ£€æŸ¥PR æ¨¡æ¿æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ‹·è´ä¸€ä»½åˆ°å½“å‰ç›®å½•
 'Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm
 If mfso.FileExists(mokc.Item("FL").Item("FDN").Key & "\010c1612_Purchase Requisition.xlsm") Then
 Else
  If mfso.FileExists("Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm") Then
  mfso.copy_file "Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm", mokc.Item("FL").Item("FDN").Key & "\010c1612_Purchase Requisition.xlsm"
  Else
- Msgbox "ÎŞ PRÄ£°å£ºZ:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm"
+ Msgbox "æ—  PRæ¨¡æ¿ï¼šZ:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm"
  b_c = False
  End If
 End If
 mokc.Item("PR").Item("FLFP_TEMPLATE").Key = mokc.Item("FL").Item("FDN").Key & "\010c1612_Purchase Requisition.xlsm"
-'¼ì²éPR Ä£°åÊÇ·ñ´æÔÚ£¬²»´æÔÚ¿½±´Ò»·İµ½µ±Ç°Ä¿Â¼
+'æ£€æŸ¥PR æ¨¡æ¿æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ‹·è´ä¸€ä»½åˆ°å½“å‰ç›®å½•
 '=====================
 If b_c = False Then
 Msgbox "PR template does not exist ! can not create  PR"
@@ -368,7 +368,7 @@ End If
 
 
 '==============================
-'¼ì²éÄ£°åÖĞÏîÄ¿ÃûÏîÄ¿ºÅÊÇ·ñ´æÔÚ£¬²»´æÔÚÒªÇóÊäÈë
+'æ£€æŸ¥æ¨¡æ¿ä¸­é¡¹ç›®åé¡¹ç›®å·æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨è¦æ±‚è¾“å…¥
 If open_wb(wb_pr, mokc.Item("PR").Item("FLFP_TEMPLATE").Key) Then
 str1 = wb_pr.Worksheets(1).Range("G7")
 Do While Len(str1) = 0
@@ -387,10 +387,10 @@ wb_pr.Close
 Else
 b_c = False
 End If
-'¼ì²éÄ£°åÖĞÏîÄ¿ÃûÏîÄ¿ºÅÊÇ·ñ´æÔÚ£¬²»´æÔÚÒªÇóÊäÈë
+'æ£€æŸ¥æ¨¡æ¿ä¸­é¡¹ç›®åé¡¹ç›®å·æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨è¦æ±‚è¾“å…¥
 '==============================
 If b_c = False Then
-Msgbox "PR Ä£°å ÖĞÏîÄ¿Ãû³Æ£¬ºÍÏîÄ¿ºÅÎ´ÌîĞ´"
+Msgbox "PR æ¨¡æ¿ ä¸­é¡¹ç›®åç§°ï¼Œå’Œé¡¹ç›®å·æœªå¡«å†™"
 Exit Sub
 End If
 
@@ -400,21 +400,21 @@ End If
 
 
 '============================
-'MO ¼ì²é£¬Èç¹ûÊÇMO ½ö×÷MO
+'MO æ£€æŸ¥ï¼Œå¦‚æœæ˜¯MO ä»…ä½œMO
 Dim i_moid As Integer
 i_moid = 0
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = UNIT_check(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("MO ID").Key)
 If Len(str1) > 0 Then
 If my_cint(str1) = 0 And i_moid > 0 Then
-Msgbox "MO µ¥×ÓºÍ PX µ¥×Ó±ØĞë·Ö¿ªÏÂ£¡"
+Msgbox "MO å•å­å’Œ PX å•å­å¿…é¡»åˆ†å¼€ä¸‹ï¼"
 b_c = False
 Exit For
 End If
 If i_moid < my_cint(str1) Then
 i_moid = my_cint(str1)
 If i_moid > 999 Then
-Msgbox "MO ±àºÅ±ØĞëĞ¡ÓÚ999!"
+Msgbox "MO ç¼–å·å¿…é¡»å°äº999!"
 b_c = False
 Exit For
 End If
@@ -422,28 +422,28 @@ End If
 End If
 Next
 
-'MO ¼ì²é£¬Èç¹ûÊÇMO ½ö×÷MO
+'MO æ£€æŸ¥ï¼Œå¦‚æœæ˜¯MO ä»…ä½œMO
 '============================
 If b_c = False Then
-Msgbox "MO Check Error£¡ " & Chr(10) & "Row:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "MO Check Errorï¼ " & Chr(10) & "Row:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit Sub
 End If
 
 
 '===================
-'Èç¹ûÊÇMO£¬ÔòĞŞ¸Ä
+'å¦‚æœæ˜¯MOï¼Œåˆ™ä¿®æ”¹
 If i_moid > 0 Then
 mokc.Item("PR").Item("PRN_LAST").Key = CStr(i_moid * 10)
 mokc.Item("PR").Item("PRN_LAST").Key = Right("000" & mokc.Item("PR").Item("PRN_LAST").Key, 4)
 End If
-'Èç¹ûÊÇMO£¬ÔòĞŞ¸Ä
+'å¦‚æœæ˜¯MOï¼Œåˆ™ä¿®æ”¹
 '===================
 
 
 
 
 '============================
-'µ¥Î» ¼ì²é
+'å•ä½ æ£€æŸ¥
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = UNIT_check(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("UNIT").Key)
 If Len(str1) = 0 Then
@@ -454,7 +454,7 @@ mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("UNIT").Key = str1
 End If
 Next
 
-'µ¥Î» ¼ì²é
+'å•ä½ æ£€æŸ¥
 '============================
 If b_c = False Then
 Msgbox "Unit Check fail." & Chr(10) & "Row:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
@@ -466,7 +466,7 @@ End If
 
 
 '============================2019 12 09
-'¹¤Î»ºÅ¼ì²é  Ö»ÔÊĞí CN.??????.???, ºÍ "D.?????.???"
+'å·¥ä½å·æ£€æŸ¥  åªå…è®¸ CN.??????.???, å’Œ "D.?????.???"
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("TKID_STATION").Key
 
@@ -475,10 +475,10 @@ b_c = False
 Exit For
 End If
 Next
-'¹¤Î»ºÅ¼ì²é  Ö»ÔÊĞí CN.??????.???, ºÍ "D.?????.???"
+'å·¥ä½å·æ£€æŸ¥  åªå…è®¸ CN.??????.???, å’Œ "D.?????.???"
 '============================2019 12 09
 If b_c = False Then
-Msgbox "Station Number Check fail Must Be : CN.??????.??? OR  D.?????.???¡¡" & Chr(10) & "Row:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "Station Number Check fail Must Be : CN.??????.??? OR  D.?????.???ã€€" & Chr(10) & "Row:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit Sub
 End If
 
@@ -488,7 +488,7 @@ End If
 
 
 '============================
-'µ½»õÈÕÆÚ ¼ì²é
+'åˆ°è´§æ—¥æœŸ æ£€æŸ¥
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("E_DATE").Key
 If Len(str1) = 0 Then
@@ -498,7 +498,7 @@ Else
 End If
 Next
 
-'µ½»õÈÕÆÚ ¼ì²é
+'åˆ°è´§æ—¥æœŸ æ£€æŸ¥
 '============================
 If b_c = False Then
 Msgbox "Date receive error:" & Chr(10) & "Row:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
@@ -510,7 +510,7 @@ End If
 
 
 '============================
-'¹©Ó¦ÉÌÃû³Æ ¼ì²é¼°·ÖÀà
+'ä¾›åº”å•†åç§° æ£€æŸ¥åŠåˆ†ç±»
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = OEM_NAME_check(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("OEM_NAME").Key)
 If Len(str1) = 0 Then
@@ -529,24 +529,24 @@ Else
 mokc.Item("PR").Item("OEM_NAME").Item(str1).Add CStr(i), CStr(i)
 End If
 Next
-'¹©Ó¦ÉÌÃû³Æ ¼ì²é¼°·ÖÀà
+'ä¾›åº”å•†åç§° æ£€æŸ¥åŠåˆ†ç±»
 '============================
 
 
 
 
 If b_c = False Then
-Msgbox "¶ÁÈ¡ ¹©Ó¦ÉÌ¼ì²é Ê§°Ü£¬ÎŞ·¨ÖÆ×÷PR" & Chr(10) & "ĞĞºÅ:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "è¯»å– ä¾›åº”å•†æ£€æŸ¥ å¤±è´¥ï¼Œæ— æ³•åˆ¶ä½œPR" & Chr(10) & "è¡Œå·:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit Sub
 End If
 
 
 '============================
-'±ê×¼¼ş ºÍ ÆäËû PA ±ØĞë·Ö¿ªÏÂ
+'æ ‡å‡†ä»¶ å’Œ å…¶ä»– PA å¿…é¡»åˆ†å¼€ä¸‹
 If mokc.Item("PR").Item("OEM_NAME").Count > 1 Then
 If Not (mokc.Item("PR").Item("OEM_NAME").Item("NA") Is Nothing) Then
 
-Msgbox "ĞĞºÅ£º" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("NA").Item(1).Key)).Key
+Msgbox "è¡Œå·ï¼š" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("NA").Item(1).Key)).Key
 b_c = False
 
 End If
@@ -555,18 +555,18 @@ Msgbox "NA DoNot Use This!"
 b_c = False
 Exit Sub
 End If
-'±ê×¼¼ş ºÍ ÆäËû PA ±ØĞë·Ö¿ªÏÂ
+'æ ‡å‡†ä»¶ å’Œ å…¶ä»– PA å¿…é¡»åˆ†å¼€ä¸‹
 '============================
 If b_c = False Then
-Msgbox "Screws (NA)£¬Must create PR in separate."
+Msgbox "Screws (NA)ï¼ŒMust create PR in separate."
 Exit Sub
 End If
 
 
 
 '=====================
-'N/A Ö±½Ó ÌîĞ´ N/A
-'¹©Ó¦ÉÌÃû³Æ²»ÄÜ°üº¬ÌØÊâ×Ö·û
+'N/A ç›´æ¥ å¡«å†™ N/A
+'ä¾›åº”å•†åç§°ä¸èƒ½åŒ…å«ç‰¹æ®Šå­—ç¬¦
 If mokc.Item("PR").Item("OEM_NAME").Count > 1 Then
 If Not (mokc.Item("PR").Item("OEM_NAME").Item("N/A") Is Nothing) Then
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Item("N/A").Count
@@ -586,12 +586,12 @@ If InStr(str1, ":") > 0 Then b_c = False
 If InStr(str1, "?") > 0 Then b_c = False
 If b_c = False Then Exit For
 Next
-'N/A Ö±½Ó ÌîĞ´ N/A
-'¹©Ó¦ÉÌÃû³Æ²»ÄÜ°üº¬ÌØÊâ×Ö·û
+'N/A ç›´æ¥ å¡«å†™ N/A
+'ä¾›åº”å•†åç§°ä¸èƒ½åŒ…å«ç‰¹æ®Šå­—ç¬¦
 '=====================
-'¼ì²éPR Ä£°åÊÇ·ñ´æÔÚ£¬²»´æÔÚ¿½±´Ò»·İµ½µ±Ç°Ä¿Â¼
+'æ£€æŸ¥PR æ¨¡æ¿æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ‹·è´ä¸€ä»½åˆ°å½“å‰ç›®å½•
 If b_c = False Then
-Msgbox "manufature name contain   \ / : * ?  please modify £º" & str1
+Msgbox "manufature name contain   \ / : * ?  please modify ï¼š" & str1
 Exit Sub
 End If
 
@@ -600,19 +600,19 @@ End If
 
 
 '=================================
-'»ú¼Ó¼ş(TKSE) ±ØĞëÓĞÍ¼ºÅ
+'æœºåŠ ä»¶(TKSE) å¿…é¡»æœ‰å›¾å·
 If mokc.Item("PR").Item("OEM_NAME").Count > 0 Then
 If Not (mokc.Item("PR").Item("OEM_NAME").Item("TKSE") Is Nothing) Then
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Count
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Item("TKID").Key
 If Len(str1) = 0 Then
-Msgbox "manuture TKSY must have tkid ,Row£º" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Key
+Msgbox "manuture TKSY must have tkid ,Rowï¼š" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Key
 b_c = False
 End If
 Next
 End If
 End If
-'»ú¼Ó¼ş(TKSE) ±ØĞëÓĞÍ¼ºÅ
+'æœºåŠ ä»¶(TKSE) å¿…é¡»æœ‰å›¾å·
 '=================================
 If b_c = False Then
 Msgbox "Mechanical parts (TKSE) NO tkid can not create PR!"
@@ -624,7 +624,7 @@ End If
 
 
 '=================================
-'·ÇNA£¬N/A¼ş£¬ĞÍºÅºÍTKID²»ÄÜÍ¬Ê±Îª¿Õ
+'éNAï¼ŒN/Aä»¶ï¼Œå‹å·å’ŒTKIDä¸èƒ½åŒæ—¶ä¸ºç©º
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("TKID").Key)
 str2 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("OEM_ID").Key)
@@ -632,31 +632,31 @@ str3 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("OEM_NAME").Key
 If (str3 <> "NA") Or (str3 <> "N/A") Then
 If Len(str1) = 0 And Len(str2) = 0 Then
 b_c = False
-Msgbox "·Ç±ê¼ş£¬ĞÍºÅ£¬µÙÉ­ºÅ²»ÄÜÍ¬Ê±Îª¿Õ¡£¼ì²éĞĞ£º" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "éæ ‡ä»¶ï¼Œå‹å·ï¼Œè’‚æ£®å·ä¸èƒ½åŒæ—¶ä¸ºç©ºã€‚æ£€æŸ¥è¡Œï¼š" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit For
 End If
 End If
 Next
-'·ÇNA£¬N/A¼ş£¬ĞÍºÅºÍTKID²»ÄÜÍ¬Ê±Îª¿Õ
+'éNAï¼ŒN/Aä»¶ï¼Œå‹å·å’ŒTKIDä¸èƒ½åŒæ—¶ä¸ºç©º
 '=================================
 If b_c = False Then
-Msgbox "¶©»õºÅ²»ÄÜÎª¿Õ,ÎŞ·¨ÖÆ×÷PR"
+Msgbox "è®¢è´§å·ä¸èƒ½ä¸ºç©º,æ— æ³•åˆ¶ä½œPR"
 Exit Sub
 End If
 
 
 
-'20181021 PR°´ĞÍºÅÅÅĞò
+'20181021 PRæŒ‰å‹å·æ’åº
 sort_pr mokc
 
-'20181021 PR°´ĞÍºÅÅÅĞò
+'20181021 PRæŒ‰å‹å·æ’åº
 
 
 
 '==============================
-'ÄÚ´æÖĞÖÆ×÷È«²¿PRµ¥×Ó
+'å†…å­˜ä¸­åˆ¶ä½œå…¨éƒ¨PRå•å­
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
-'Êä³öµ¥ÕÅPRµ¥
+'è¾“å‡ºå•å¼ PRå•
 
 
 
@@ -677,7 +677,7 @@ End If
 
 str2 = CStr(j)
 'str2 = Left("000", 4 - Len(str2)) & str2
-'20180530 ĞŞ¸ÄºÅÂë¸ñÊ½PX00010001ÎªPX0001.001
+'20180530 ä¿®æ”¹å·ç æ ¼å¼PX00010001ä¸ºPX0001.001
 str2 = Left(".00", 4 - Len(str2)) & str2
 
 str1 = str1 & str2
@@ -685,12 +685,12 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "C"
 
 
 'D
-'ShortText, »ú¼Ó¼ş TKID£¬Íâ¹º¼ş OEM_ID
-'1.»ú¼Ó¼ş=¡µTKID
-'2.Íâ¹º¼ş£¬Í¬Ê±ÓĞĞÍºÅ£¬ÓÖÓĞTKID,£¨×ö·¨£ºDÁĞĞÍºÅ£¬TKIDºÍÆäËûÄÚÈİºÏ²¢ÈëMEMO£©
-'3.Íâ¹º¼ş£¬½öÓĞĞÍºÅ
-'4.Íâ¹º¼ş£¬½öÓĞTKID
-'5.Íâ¹º¼ş£ºÃ»ĞÍºÅÒ²Ã»ÓĞTKID
+'ShortText, æœºåŠ ä»¶ TKIDï¼Œå¤–è´­ä»¶ OEM_ID
+'1.æœºåŠ ä»¶=ã€‰TKID
+'2.å¤–è´­ä»¶ï¼ŒåŒæ—¶æœ‰å‹å·ï¼Œåˆæœ‰TKID,ï¼ˆåšæ³•ï¼šDåˆ—å‹å·ï¼ŒTKIDå’Œå…¶ä»–å†…å®¹åˆå¹¶å…¥MEMOï¼‰
+'3.å¤–è´­ä»¶ï¼Œä»…æœ‰å‹å·
+'4.å¤–è´­ä»¶ï¼Œä»…æœ‰TKID
+'5.å¤–è´­ä»¶ï¼šæ²¡å‹å·ä¹Ÿæ²¡æœ‰TKID
 str1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Key
 If str1 = "TKSE" Then
 str2 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID").Key
@@ -708,19 +708,19 @@ End If
 
 
 'E
-'Ö±½Ó½«TKID_SUBASSÌîÈë
+'ç›´æ¥å°†TKID_SUBASSå¡«å…¥
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID_SUBASS").Key
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "E"
 
 'F
-'Ö±½Ó½«OEM_NAME ÌîÈë
+'ç›´æ¥å°†OEM_NAME å¡«å…¥
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("OEM_NAME").Key
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "F"
 
 'G
-'Ãû³Æ
-'1.»ú¼Ó¼ş.TKID**Ãû³Æ
-'2.Íâ¹º¼ş.Ãû³Æ
+'åç§°
+'1.æœºåŠ ä»¶.TKID**åç§°
+'2.å¤–è´­ä»¶.åç§°
 str1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Key
 If str1 = "TKSE" Then
 str2 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID").Key)
@@ -738,20 +738,20 @@ End If
 
 'H
 'CostUnit
-'Ê¹ÓÃ ¸ú×Ù±íÃû³Æ×ó±ß4Î» CN.3  & ¹¤Î»ºÅÄÚÏîÄ¿Ãû & 41 & ¹¤Î»ºÅÄÚ¹¤Î»Ãû
+'ä½¿ç”¨ è·Ÿè¸ªè¡¨åç§°å·¦è¾¹4ä½ CN.3  & å·¥ä½å·å†…é¡¹ç›®å & 41 & å·¥ä½å·å†…å·¥ä½å
 str1 = Left(wb_fl.Name, 4)
 str2 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID_STATION").Key)
 
 
 
-'2019 12 06 ÔÊĞíÖ±½ÓÊäÈë³É±¾ÖĞĞÄºÅ
+'2019 12 06 å…è®¸ç›´æ¥è¾“å…¥æˆæœ¬ä¸­å¿ƒå·
 If str2 Like "CN.??????.???*" Then
 str3 = str2
 Else
 str2 = Left(str2, 11)
 str3 = str1 & Mid(str2, 3, 5) & ".41" & Right(str2, 3)
 End If
-'2019 12 06 ÔÊĞíÖ±½ÓÊäÈë³É±¾ÖĞĞÄºÅ
+'2019 12 06 å…è®¸ç›´æ¥è¾“å…¥æˆæœ¬ä¸­å¿ƒå·
 
 
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str3, "H"
@@ -759,13 +759,13 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str3, "H"
 
 
 'I
-'ÊıÁ¿
+'æ•°é‡
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("QTY").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "I"
 
 
 'J
-'µ¥Î»
+'å•ä½
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("UNIT").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "J"
 
@@ -801,8 +801,8 @@ End If
 
 
 
-'N·¢»õÆÚ
-'¸÷ÖÖÈÕÆÚ¸ñÊ½×ª»»
+'Nå‘è´§æœŸ
+'å„ç§æ—¥æœŸæ ¼å¼è½¬æ¢
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("E_DATE").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "N"
 
@@ -810,10 +810,10 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "N"
 
 
 
-'O±¸×¢
-'¸÷ÖÖÇé¿ö±¸×¢
-'1.»ú¼Ó¼ş£¨TKSE£©£¬¹æ¸ñ**Description
-'2.Íâ¹º¼ş, TKID**¹æ¸ñ**Description
+'Oå¤‡æ³¨
+'å„ç§æƒ…å†µå¤‡æ³¨
+'1.æœºåŠ ä»¶ï¼ˆTKSEï¼‰ï¼Œè§„æ ¼**Description
+'2.å¤–è´­ä»¶, TKID**è§„æ ¼**Description
 str1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Key
 If str1 = "TKSE" Then
 str2 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("DIMENSION").Key)
@@ -852,7 +852,7 @@ End If
 Next
 
 
-'PRµ¥ºÅ¼Ó1
+'PRå•å·åŠ 1
 i_PRN_LAST = CInt(mokc.Item("PR").Item("PRN_LAST").Key)
 i_PRN_LAST = i_PRN_LAST + 1
 s_PRN_LAST = CStr(i_PRN_LAST)
@@ -860,21 +860,21 @@ If Len(s_PRN_LAST) < 4 Then
 s_PRN_LAST = Left("000", 4 - Len(s_PRN_LAST)) & s_PRN_LAST
 End If
 mokc.Item("PR").Item("PRN_LAST").Key = s_PRN_LAST
-'PRµ¥ºÅ¼Ó1
+'PRå•å·åŠ 1
 
  
 
 Next
-'ÄÚ´æÖĞÖÆ×÷È«²¿PRµ¥×Ó
+'å†…å­˜ä¸­åˆ¶ä½œå…¨éƒ¨PRå•å­
 '==============================
 
 
 
 '====================================
-'µ¥Ôª¸ñ³¤¶È½öÔÊĞí35£¬ÒıÆğµÄ¶Ô mokc.Item("PR").Item("OEM_NAME") µÄ´¦Àí
-'DÁĞ³¬³¤ ÓÃ..Á¬½ÓÖÁ£¬OÁĞ
-'GÁĞ³¬³¤ ÓÃ##Á¬½ÓÖÁ£¬OÁĞ
-'OÁĞ³¬³¤ ÓÃ^^ºÍÇ°ÃæµÄ·Ö¿ª£¬ÆäÓà·ÅÈë ×¢ÊÍ
+'å•å…ƒæ ¼é•¿åº¦ä»…å…è®¸35ï¼Œå¼•èµ·çš„å¯¹ mokc.Item("PR").Item("OEM_NAME") çš„å¤„ç†
+'Dåˆ—è¶…é•¿ ç”¨..è¿æ¥è‡³ï¼ŒOåˆ—
+'Gåˆ—è¶…é•¿ ç”¨##è¿æ¥è‡³ï¼ŒOåˆ—
+'Oåˆ—è¶…é•¿ ç”¨^^å’Œå‰é¢çš„åˆ†å¼€ï¼Œå…¶ä½™æ”¾å…¥ æ³¨é‡Š
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
 For j = 1 To mokc.Item("PR").Item("OEM_NAME").Item(i).Count
 s_t1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("D").Key
@@ -910,7 +910,7 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add s_t4, "Comment"
 End If
 Next
 Next
-'µ¥Ôª¸ñ³¤¶È½öÔÊĞí35£¬ÒıÆğµÄ¶Ô mokc.Item("PR").Item("OEM_NAME") µÄ´¦Àí
+'å•å…ƒæ ¼é•¿åº¦ä»…å…è®¸35ï¼Œå¼•èµ·çš„å¯¹ mokc.Item("PR").Item("OEM_NAME") çš„å¤„ç†
 '====================================
 
 
@@ -921,26 +921,26 @@ Next
 
 
 '==============================
-'ÄÚ´æÖĞPRµ¥£¬´æÖÁ´ÅÅÌPRÎÄ¼ş
-'´ò¿ªÄ£°å
+'å†…å­˜ä¸­PRå•ï¼Œå­˜è‡³ç£ç›˜PRæ–‡ä»¶
+'æ‰“å¼€æ¨¡æ¿
 
 
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
-'PRµ¥ÎÄ¼şÃû£ºPX1515_CN.305587-8-9_Spare parts_20170725.xlsm
-'PRµ¥ÎÄ¼şÃû£ºPX####_CN.######_OEM_NAME_YYYYMMDD.xlsm
+'PRå•æ–‡ä»¶åï¼šPX1515_CN.305587-8-9_Spare parts_20170725.xlsm
+'PRå•æ–‡ä»¶åï¼šPX####_CN.######_OEM_NAME_YYYYMMDD.xlsm
 str1 = Left(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(1).Item("C").Key, 6)
 
 
 str2 = Left(wb_fl.Name, 9)
 str3 = mokc.Item("PR").Item("OEM_NAME").Item(i).Key
 
-'20181129 È¥³ı¹©Ó¦ÉÌÃû³ÆÀïÃæµÄÌØÊâ×Ö·û
+'20181129 å»é™¤ä¾›åº”å•†åç§°é‡Œé¢çš„ç‰¹æ®Šå­—ç¬¦
 If Not mokc_manu.Item("MANUFATURE") Is Nothing Then
 If Not mokc_manu.Item("MANUFATURE").Item("BODY").Item(str3) Is Nothing Then
 str3 = mokc_manu.Item("MANUFATURE").Item("BODY").Item(str3).Item(str3).Item(1).Item(2).Key
 End If
 End If
-'20181129 È¥³ı¹©Ó¦ÉÌÃû³ÆÀïÃæµÄÌØÊâ×Ö·û
+'20181129 å»é™¤ä¾›åº”å•†åç§°é‡Œé¢çš„ç‰¹æ®Šå­—ç¬¦
 
 
 fln = str1 & "_" & str2 & "_" & str3 & "_" & Format(Now(), "YYYYMMDD") & ".xlsm"
@@ -956,10 +956,10 @@ wb_pr.Worksheets(1).Range("O7") = str1
 
 
 '=======================================
-'¸üÕıµ¥Ôª¸ñ£ºName of component .TK Internal Ident. number
+'æ›´æ­£å•å…ƒæ ¼ï¼šName of component .TK Internal Ident. number
 wb_pr.Worksheets(1).Range("D20") = "Vendor Part No."
 wb_pr.Worksheets(1).Range("G20") = "Name of component .TK Internal Ident. number"
-'¸üÕıµ¥Ôª¸ñ£ºName of component .TK Internal Ident. number
+'æ›´æ­£å•å…ƒæ ¼ï¼šName of component .TK Internal Ident. number
 '=======================================
 
 
@@ -1003,10 +1003,10 @@ add_comm mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("Comment").Key, w
 wb_pr.Worksheets(1).Rows(20 + j & ":" & 20 + j).Interior.Color = 255
 End If
 
-'ÔÚ×Ü±íÀïÃæ¼ÇÂ¼PRºÅ
+'åœ¨æ€»è¡¨é‡Œé¢è®°å½•PRå·
 ws_partsingle.Cells(CInt(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Key), CInt(mokc.Item("WS_PartSingle").Item("WS_HEAD").Item("PA_Index").Item(1).Key)) = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("C").Key
 
-'ÔÚ×Ü±íÀïÃæ¼ÇÂ¼PRºÅ
+'åœ¨æ€»è¡¨é‡Œé¢è®°å½•PRå·
 
 
 
@@ -1014,28 +1014,28 @@ ws_partsingle.Cells(CInt(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mo
 Next
 
 
-'ÉèÖÃ´òÓ¡ÇøÓò
+'è®¾ç½®æ‰“å°åŒºåŸŸ
 
 wb_pr.Worksheets("PA").PageSetup.PrintArea = "$B$1:$O$" & j + 20
 
 wb_pr.Save
 
-'ÉèÖÃ´òÓ¡ÇøÓò
+'è®¾ç½®æ‰“å°åŒºåŸŸ
 wb_pr.Close
 
 
 Next
 
-'ÄÚ´æÖĞPRµ¥£¬´æÖÁ´ÅÅÌPRÎÄ¼ş
+'å†…å­˜ä¸­PRå•ï¼Œå­˜è‡³ç£ç›˜PRæ–‡ä»¶
 ''==============================
 
 
 wb_fl.Save
 
 
-'´ò¿ªÎÄ¼ş¼Ğ
+'æ‰“å¼€æ–‡ä»¶å¤¹
 Shell "explorer.exe " & mokc.Item("FL").Item("FDN").Item("FDNPR").Key, vbNormalFocus
-'´ò¿ªÎÄ¼ş¼Ğ
+'æ‰“å¼€æ–‡ä»¶å¤¹
 
 Workbooks("PR_Create_Tool.xlsm").Saved = True
 Workbooks("PR_Create_Tool.xlsm").Close
@@ -1044,7 +1044,7 @@ End Sub
 
 
 Function TableHead_REC(mokc As OneKeyCls, ws As Worksheet, row_n As Integer, col_n As Integer, rg_value As String, skey As String) As Boolean
-'¼ÇÂ¼±íÍ·
+'è®°å½•è¡¨å¤´
 TableHead_REC = False
     If ws.Cells(row_n, col_n) = rg_value Then
         If mokc.Item(skey) Is Nothing Then
@@ -1060,11 +1060,11 @@ TableHead_REC = False
 End Function
 
 Function OEM_NAME_check(str1 As String) As String
-'¹©Ó¦ÉÌÃû³ÆÇåÏ´
+'ä¾›åº”å•†åç§°æ¸…æ´—
 If str1 = "TKSY" Or str1 = "TK SY" Or str1 = "TK SE" Or str1 = "tkSY" Or str1 = "tk SY" Then
 OEM_NAME_check = "TKSE"
-ElseIf str1 Like "*ÒÑ*¹º*" Then
-Msgbox "ÇëÈ·ÈÏÊÇ·ñÒÑ²É¹º£º" & str1 & Chr(10) & "ÒÑ²É¹ºÏîÄ¿ ±ê¼ÇDone ºóÖØĞÂÔËĞĞ±¾ºê"
+ElseIf str1 Like "*å·²*è´­*" Then
+Msgbox "è¯·ç¡®è®¤æ˜¯å¦å·²é‡‡è´­ï¼š" & str1 & Chr(10) & "å·²é‡‡è´­é¡¹ç›® æ ‡è®°Done åé‡æ–°è¿è¡Œæœ¬å®"
 OEM_NAME_check = ""
 ElseIf InStr(str1, Chr(10)) > 0 Or InStr(str1, Chr(13)) > 0 Or InStr(str1, "\") > 0 Or InStr(str1, "/") > 0 Then
 Msgbox "Error Char in manufature name!"
@@ -1072,13 +1072,13 @@ OEM_NAME_check = ""
 Else
 OEM_NAME_check = str1
 End If
-'¹©Ó¦ÉÌÃû³ÆÇåÏ´
+'ä¾›åº”å•†åç§°æ¸…æ´—
 End Function
 Function UNIT_check(str1 As String) As String
-'µ¥Î»Ãû³ÆÇåÏ´
-'1."",Ìæ»»ÎªPCE£¨ÎªÁËÉÏ´«£©
-'2."EA"Ìæ»»»»ÎªPCE
-'3.ST Ìæ»»ÎªSET
+'å•ä½åç§°æ¸…æ´—
+'1."",æ›¿æ¢ä¸ºPCEï¼ˆä¸ºäº†ä¸Šä¼ ï¼‰
+'2."EA"æ›¿æ¢æ¢ä¸ºPCE
+'3.ST æ›¿æ¢ä¸ºSET
 If str1 = "" Or str1 = "EA" Then
 UNIT_check = "PCE"
 ElseIf str1 = "LOT" Then
@@ -1090,18 +1090,18 @@ UNIT_check = str1
 End If
 
 
-'¹©Ó¦ÉÌÃû³ÆÇåÏ´
+'ä¾›åº”å•†åç§°æ¸…æ´—
 End Function
 
 Function format_date_DDMMYYYY(m_c As Range) As String
-'¸ñÊ½»¯ÈÕÆÚº¯Êı
-'Ö§³ÖExcelÈ«²¿ÈÕÆÚ¸ñÊ½ºÍCW£¿£¿ĞÎÊ½
+'æ ¼å¼åŒ–æ—¥æœŸå‡½æ•°
+'æ”¯æŒExcelå…¨éƒ¨æ—¥æœŸæ ¼å¼å’ŒCWï¼Ÿï¼Ÿå½¢å¼
     Dim date_1 As Date
     Dim s_1 As String
     Dim wk As Integer
     Dim str_date As String
 '===============================
-'µ¥Ôª¸ñÒÑ¾­ÊÇÈÕÆÚ¸ñÊ½µÄ£¬½øĞĞ¸ñÊ½×ª»»
+'å•å…ƒæ ¼å·²ç»æ˜¯æ—¥æœŸæ ¼å¼çš„ï¼Œè¿›è¡Œæ ¼å¼è½¬æ¢
 
     If IsDate(m_c) = True Then
     date_1 = m_c
@@ -1109,13 +1109,13 @@ Function format_date_DDMMYYYY(m_c As Range) As String
     Else
     format_date_DDMMYYYY = Trim(m_c)
     End If
-'µ¥Ôª¸ñÒÑ¾­ÊÇÈÕÆÚ¸ñÊ½µÄ£¬½øĞĞ¸ñÊ½×ª»»
+'å•å…ƒæ ¼å·²ç»æ˜¯æ—¥æœŸæ ¼å¼çš„ï¼Œè¿›è¡Œæ ¼å¼è½¬æ¢
 '===============================
 '===========================
-'ÅĞ¶ÏÊÇ·ñ×ª»»³É¹¦£¬Èç¹ûÎ´³É¹¦£¬ÅĞ¶ÏÊÇ·ñÎªCW##¸ñÊ½²¢×ª»»
+'åˆ¤æ–­æ˜¯å¦è½¬æ¢æˆåŠŸï¼Œå¦‚æœæœªæˆåŠŸï¼Œåˆ¤æ–­æ˜¯å¦ä¸ºCW##æ ¼å¼å¹¶è½¬æ¢
 
 If format_date_DDMMYYYY Like "##.##.####" Then
-'³É¹¦Ö±½ÓÌø¹ı
+'æˆåŠŸç›´æ¥è·³è¿‡
 Else
 
     str_date = format_date_DDMMYYYY
@@ -1150,7 +1150,7 @@ Else
     End If
     
 End If
-'ÅĞ¶ÏÊÇ·ñ×ª»»³É¹¦£¬Èç¹ûÎ´³É¹¦£¬ÅĞ¶ÏÊÇ·ñÎªCW##¸ñÊ½²¢×ª»»
+'åˆ¤æ–­æ˜¯å¦è½¬æ¢æˆåŠŸï¼Œå¦‚æœæœªæˆåŠŸï¼Œåˆ¤æ–­æ˜¯å¦ä¸ºCW##æ ¼å¼å¹¶è½¬æ¢
 '===========================
 
 
@@ -1169,7 +1169,7 @@ End Function
 
 Sub PE_Creater()
 Attribute PE_Creater.VB_ProcData.VB_Invoke_Func = "e\n14"
-'±¾ºêÓÃÓÚ´´½¨µçÆø PRµ¥×Ó
+'æœ¬å®ç”¨äºåˆ›å»ºç”µæ°” PRå•å­
 'MsgBox "WinShuttle Can Use again! Please UPload to SAP after Create PR!"
  back_followinglist
  If Enagble_addins("PPPE") Then
@@ -1199,7 +1199,7 @@ mokc.Item("FL").Add "CUR_PR_NUM", "CUR_PR_NUM"
 
 
 '=======================
-'ÕÒµ½ÒÑ¾­´ò¿ªµÄ»úĞµ¸ú×Ù±í
+'æ‰¾åˆ°å·²ç»æ‰“å¼€çš„æœºæ¢°è·Ÿè¸ªè¡¨
 Dim b_c As Boolean
 Dim str1 As String
 Dim str2 As String
@@ -1224,7 +1224,7 @@ Dim ws_partsingle As Worksheet
 Dim j As Long
 Dim j_last As Long
 
-'¶ÁÈ¡PartSingleÀïÃæµÄµ¥Ôª¸ñ
+'è¯»å–PartSingleé‡Œé¢çš„å•å…ƒæ ¼
 Dim POS As String
 Dim QTY As String
 Dim UNIT As String
@@ -1243,7 +1243,7 @@ Dim dbl_qty As Double
 
 
 
-'¶ÁÈ¡PartSingleÀïÃæµÄµ¥Ôª¸ñ
+'è¯»å–PartSingleé‡Œé¢çš„å•å…ƒæ ¼
 
 
 
@@ -1258,24 +1258,24 @@ Exit For
 End If
 Next
 If Not (wb_fl Is Nothing) Then
-Msgbox "ÖÆ×÷PRµÄ¸ú×Ù±íÎª£º" & Chr(10) & wb_fl.Name
+Msgbox "åˆ¶ä½œPRçš„è·Ÿè¸ªè¡¨ä¸ºï¼š" & Chr(10) & wb_fl.Name
 Msgbox "Create PR For:" & Chr(10) & wb_fl.Name
 
 
 If wb_fl.ReadOnly = True Then
-Msgbox "Ö»¶Á¸ñÊ½µÄ¸ú×Ù±íÎŞ·¨ÖÆ×÷PR"
+Msgbox "åªè¯»æ ¼å¼çš„è·Ÿè¸ªè¡¨æ— æ³•åˆ¶ä½œPR"
 Msgbox "Should Not be Read Only."
 
 wb_fl.Close
 Exit Sub
 End If
 Else
-Msgbox "ÇëÏÈ´ò¿ª¸ú×Ù±í£º CN.*ontrols*Following.xlsm "
+Msgbox "è¯·å…ˆæ‰“å¼€è·Ÿè¸ªè¡¨ï¼š CN.*ontrols*Following.xlsm "
 Msgbox "Please Open: CN.*Controls*Following.xlsm "
 
 Exit Sub
 End If
-'ÕÒµ½ÒÑ¾­´ò¿ªµÄ»úĞµ¸ú×Ù±í
+'æ‰¾åˆ°å·²ç»æ‰“å¼€çš„æœºæ¢°è·Ÿè¸ªè¡¨
 '=======================
 mokc.Item("FL").Item("FLN").Key = wb_fl.Name
 mokc.Item("FL").Item("FDN").Key = wb_fl.Path
@@ -1283,7 +1283,7 @@ If Right(mokc.Item("FL").Item("FDN").Key, 1) <> "\" Then
 mokc.Item("FL").Item("FDN").Key = mokc.Item("FL").Item("FDN").Key & "\"
 End If
 '=======================
-'Checking  ÎÄ¼ş¼ĞÊÇ·ñ´æÔÚ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
+'Checking  æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
 fdn = mokc.Item("FL").Item("FDN").Key & "PAE_Controls&Robot&Commissioning"
 mokc.Item("FL").Item("FDN").Item("FDNPR").Key = fdn
 If mfso.folderexists(fdn) = False Then
@@ -1294,7 +1294,7 @@ Else
 Exit Sub
 End If
 End If
-'Checking  ÎÄ¼ş¼ĞÊÇ·ñ´æÔÚ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
+'Checking  æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
 '=======================
 
 
@@ -1351,11 +1351,11 @@ mokc.Item("PR").Item("PRN_LAST").Key = s_PRN_LAST
 
 
 '=====================
-'¶ÁÈ¡ Part_single ±í¸ñ
-b_c = True ' b_c = True  Part_Single ¶ÁÈ¡³É¹¦£¬b_c = False  Part_Single ¶ÁÈ¡Ê§°Ü
+'è¯»å– Part_single è¡¨æ ¼
+b_c = True ' b_c = True  Part_Single è¯»å–æˆåŠŸï¼Œb_c = False  Part_Single è¯»å–å¤±è´¥
 mokc.Item("WS_PartSingle").Add "M_C_P", "M_C_P"
 'Record the pype: Controls or Mechanics or Pneumatics
-'²»´æÔÚ Parts_Single,Ê§°Ü
+'ä¸å­˜åœ¨ Parts_Single,å¤±è´¥
 If b_c Then
 If ws_exist(wb_fl, "Parts_Single") = False Then
 b_c = False
@@ -1364,7 +1364,7 @@ Else
 Set ws_partsingle = wb_fl.Worksheets("Parts_Single")
 End If
 End If
-'ÎŞ·¨ÅĞ¶ÏÊÇ »ú or µç or Æø Ê§°Ü
+'æ— æ³•åˆ¤æ–­æ˜¯ æœº or ç”µ or æ°” å¤±è´¥
 If b_c Then
 If InStr(wb_fl.Name, "Mechanics") > 0 Then
 mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Mechanics"
@@ -1377,7 +1377,7 @@ b_c = False
 Msgbox wb_fl.Name & Chr(10) & "File name must contain Mechanics  or Controls orPneumatics"
 End If
 End If
-'ÅĞ¶Ï Part_Single ¸ñÊ½ÊÇ·ñÊÇÔ¤ÖÃ¸ñÊ½
+'åˆ¤æ–­ Part_Single æ ¼å¼æ˜¯å¦æ˜¯é¢„ç½®æ ¼å¼
 If b_c Then
 If mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Controls" Then
 
@@ -1399,7 +1399,7 @@ If mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Controls" Then
 '    If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 19, "Release_date", "R_DATE") Then b_c = False
 '    If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 20, "Expect Week", "E_DATE") Then b_c = False
 '    If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 21, "description", "DESC") Then If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 21, "Description", "DESC") Then b_c = False
-'    If b_c = False Then MsgBox "Part_Single ±íÍ·ÎŞ·¨Ê¶±ğ"
+'    If b_c = False Then MsgBox "Part_Single è¡¨å¤´æ— æ³•è¯†åˆ«"
     
     
     
@@ -1426,9 +1426,9 @@ If mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Controls" Then
     
     'If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 17, "Station_Number", "TKID_STATION") Then b_c = False
     
-    'ĞÂÔö³É±¾ÖĞĞÄºÅÂë
+    'æ–°å¢æˆæœ¬ä¸­å¿ƒå·ç 
     If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 7, 15, "Cost Unit", "WBS") Then b_c = False
-    'ĞÂÔö³É±¾ÖĞĞÄºÅÂë
+    'æ–°å¢æˆæœ¬ä¸­å¿ƒå·ç 
     
     If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 7, 16, "PA_Index", "PA_Index") Then b_c = False
     
@@ -1438,7 +1438,7 @@ If mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Controls" Then
     
     
     If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 7, 20, "Description", "DESC") Then b_c = False
-    If b_c = False Then Msgbox "Part_Single ±íÍ·ÎŞ·¨Ê¶±ğ"
+    If b_c = False Then Msgbox "Part_Single è¡¨å¤´æ— æ³•è¯†åˆ«"
     
     
 End If
@@ -1450,7 +1450,7 @@ If b_c Then
 
 i_last = ws_partsingle.UsedRange.Rows(ws_partsingle.UsedRange.Rows.Count).row
 For i = 8 To i_last
-'¶ÁÈ¡ÊıÁ¿²»ÎªÁã£¬PA_Index Îª¿ÕµÄĞĞ
+'è¯»å–æ•°é‡ä¸ä¸ºé›¶ï¼ŒPA_Index ä¸ºç©ºçš„è¡Œ
 
 
 
@@ -1502,11 +1502,11 @@ End If
 End If
 Next
 End If
-'¶ÁÈ¡ Part_single ±í¸ñ
+'è¯»å– Part_single è¡¨æ ¼
 '=====================
 
 If b_c = False Then
-Msgbox "¶ÁÈ¡ Part_Single Ê§°Ü£¬ÎŞ·¨ÖÆ×÷PR"
+Msgbox "è¯»å– Part_Single å¤±è´¥ï¼Œæ— æ³•åˆ¶ä½œPR"
 Msgbox "Reading Part_Single failure can not create PR"
 Exit Sub
 End If
@@ -1516,24 +1516,24 @@ End If
 
 
 '=====================
-'¼ì²éPR Ä£°åÊÇ·ñ´æÔÚ£¬²»´æÔÚ¿½±´Ò»·İµ½µ±Ç°Ä¿Â¼
+'æ£€æŸ¥PR æ¨¡æ¿æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ‹·è´ä¸€ä»½åˆ°å½“å‰ç›®å½•
 'Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm
 If mfso.FileExists(mokc.Item("FL").Item("FDN").Key & "\010c1612_Purchase Requisition.xlsm") Then
 Else
  If mfso.FileExists("Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm") Then
  mfso.copy_file "Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm", mokc.Item("FL").Item("FDN").Key & "\010c1612_Purchase Requisition.xlsm"
  Else
- Msgbox "ÎŞ PRÄ£°å£ºZ:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm"
+ Msgbox "æ—  PRæ¨¡æ¿ï¼šZ:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm"
  Msgbox "NO pr template : Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm"
   
  b_c = False
  End If
 End If
 mokc.Item("PR").Item("FLFP_TEMPLATE").Key = mokc.Item("FL").Item("FDN").Key & "\010c1612_Purchase Requisition.xlsm"
-'¼ì²éPR Ä£°åÊÇ·ñ´æÔÚ£¬²»´æÔÚ¿½±´Ò»·İµ½µ±Ç°Ä¿Â¼
+'æ£€æŸ¥PR æ¨¡æ¿æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ‹·è´ä¸€ä»½åˆ°å½“å‰ç›®å½•
 '=====================
 If b_c = False Then
-Msgbox "PR Ä£°å²»´æÔÚ£¬ÎŞ·¨ÖÆ×÷PR"
+Msgbox "PR æ¨¡æ¿ä¸å­˜åœ¨ï¼Œæ— æ³•åˆ¶ä½œPR"
 Msgbox "PR template not exist can not create pr"
 Exit Sub
 End If
@@ -1544,7 +1544,7 @@ End If
 
 
 '==============================
-'¼ì²éÄ£°åÖĞÏîÄ¿ÃûÏîÄ¿ºÅÊÇ·ñ´æÔÚ£¬²»´æÔÚÒªÇóÊäÈë
+'æ£€æŸ¥æ¨¡æ¿ä¸­é¡¹ç›®åé¡¹ç›®å·æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨è¦æ±‚è¾“å…¥
 If open_wb(wb_pr, mokc.Item("PR").Item("FLFP_TEMPLATE").Key) Then
 str1 = wb_pr.Worksheets(1).Range("G7")
 Do While Len(str1) = 0
@@ -1563,10 +1563,10 @@ wb_pr.Close
 Else
 b_c = False
 End If
-'¼ì²éÄ£°åÖĞÏîÄ¿ÃûÏîÄ¿ºÅÊÇ·ñ´æÔÚ£¬²»´æÔÚÒªÇóÊäÈë
+'æ£€æŸ¥æ¨¡æ¿ä¸­é¡¹ç›®åé¡¹ç›®å·æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨è¦æ±‚è¾“å…¥
 '==============================
 If b_c = False Then
-Msgbox "PR Ä£°å ÖĞÏîÄ¿Ãû³Æ£¬ºÍÏîÄ¿ºÅÎ´ÌîĞ´"
+Msgbox "PR æ¨¡æ¿ ä¸­é¡¹ç›®åç§°ï¼Œå’Œé¡¹ç›®å·æœªå¡«å†™"
 Msgbox "NO Project name & Number in PR template."
 Exit Sub
 End If
@@ -1578,7 +1578,7 @@ End If
 
 
 '============================
-'µ¥Î» ¼ì²é
+'å•ä½ æ£€æŸ¥
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = UNIT_check(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("UNIT").Key)
 If Len(str1) = 0 Then
@@ -1589,7 +1589,7 @@ mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("UNIT").Key = str1
 End If
 Next
 
-'µ¥Î» ¼ì²é
+'å•ä½ æ£€æŸ¥
 '============================
 If b_c = False Then
 Msgbox "Unit check error:" & Chr(10) & "Row:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
@@ -1600,7 +1600,7 @@ End If
 
 
 '============================
-'µ½»õÈÕÆÚ ¼ì²é
+'åˆ°è´§æ—¥æœŸ æ£€æŸ¥
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("E_DATE").Key
 If Len(str1) = 0 Then
@@ -1610,12 +1610,12 @@ Else
 End If
 Next
 
-'µ½»õÈÕÆÚ ¼ì²é
+'åˆ°è´§æ—¥æœŸ æ£€æŸ¥
 '============================
 If b_c = False Then
-Msgbox "µ½»õÈÕÆÚ¼ì²é Ê§°Ü " & Chr(10) & "ĞĞºÅ:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "åˆ°è´§æ—¥æœŸæ£€æŸ¥ å¤±è´¥ " & Chr(10) & "è¡Œå·:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 
-Msgbox "wrong date " & Chr(10) & "ĞĞºÅ:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "wrong date " & Chr(10) & "è¡Œå·:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit Sub
 End If
 
@@ -1625,7 +1625,7 @@ End If
 
 
 '============================
-'COST_UNIT ¼ì²é
+'COST_UNIT æ£€æŸ¥
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = COST_UNIT_check(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("WBS").Key, mokc.Item("FL").Item("FLN").Key)
 If Len(str1) = 0 Then
@@ -1636,7 +1636,7 @@ mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("WBS").Key = str1
 End If
 Next
 
-'COST_UNIT ¼ì²é
+'COST_UNIT æ£€æŸ¥
 '============================
 If b_c = False Then
 Msgbox "Cost unit check error:" & Chr(10) & "row:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
@@ -1649,7 +1649,7 @@ End If
 
 
 '============================
-'¹©Ó¦ÉÌÃû³Æ ¼ì²é¼°·ÖÀà
+'ä¾›åº”å•†åç§° æ£€æŸ¥åŠåˆ†ç±»
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = OEM_NAME_check(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("OEM_NAME").Key)
 If Len(str1) = 0 Then
@@ -1668,7 +1668,7 @@ Else
 mokc.Item("PR").Item("OEM_NAME").Item(str1).Add CStr(i), CStr(i)
 End If
 Next
-'¹©Ó¦ÉÌÃû³Æ ¼ì²é¼°·ÖÀà
+'ä¾›åº”å•†åç§° æ£€æŸ¥åŠåˆ†ç±»
 '============================
 If b_c = False Then
 Msgbox "Manufature error:" & Chr(10) & "Row:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
@@ -1677,14 +1677,14 @@ End If
 
 
 '============================
-'±ê×¼¼ş ºÍ ÆäËû PA ±ØĞë·Ö¿ªÏÂ
+'æ ‡å‡†ä»¶ å’Œ å…¶ä»– PA å¿…é¡»åˆ†å¼€ä¸‹
 If mokc.Item("PR").Item("OEM_NAME").Count > 1 Then
 If Not (mokc.Item("PR").Item("OEM_NAME").Item("NA") Is Nothing) Then
-Msgbox "Row £º" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("NA").Item(1).Key)).Key
+Msgbox "Row ï¼š" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("NA").Item(1).Key)).Key
 b_c = False
 End If
 End If
-'±ê×¼¼ş ºÍ ÆäËû PA ±ØĞë·Ö¿ªÏÂ
+'æ ‡å‡†ä»¶ å’Œ å…¶ä»– PA å¿…é¡»åˆ†å¼€ä¸‹
 '============================
 If b_c = False Then
 Msgbox "Manufacturer cannot be N/A"
@@ -1694,8 +1694,8 @@ End If
 
 
 '=====================
-'N/A Ö±½Ó ÌîĞ´ N/A
-'¹©Ó¦ÉÌÃû³Æ²»ÄÜ°üº¬ÌØÊâ×Ö·û
+'N/A ç›´æ¥ å¡«å†™ N/A
+'ä¾›åº”å•†åç§°ä¸èƒ½åŒ…å«ç‰¹æ®Šå­—ç¬¦
 If mokc.Item("PR").Item("OEM_NAME").Count > 1 Then
 If Not (mokc.Item("PR").Item("OEM_NAME").Item("N/A") Is Nothing) Then
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Item("N/A").Count
@@ -1715,13 +1715,13 @@ If InStr(str1, ":") > 0 Then b_c = False
 If InStr(str1, "?") > 0 Then b_c = False
 If b_c = False Then Exit For
 Next
-'N/A Ö±½Ó ÌîĞ´ N/A
-'¹©Ó¦ÉÌÃû³Æ²»ÄÜ°üº¬ÌØÊâ×Ö·û
+'N/A ç›´æ¥ å¡«å†™ N/A
+'ä¾›åº”å•†åç§°ä¸èƒ½åŒ…å«ç‰¹æ®Šå­—ç¬¦
 '=====================
-'¼ì²éPR Ä£°åÊÇ·ñ´æÔÚ£¬²»´æÔÚ¿½±´Ò»·İµ½µ±Ç°Ä¿Â¼
+'æ£€æŸ¥PR æ¨¡æ¿æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ‹·è´ä¸€ä»½åˆ°å½“å‰ç›®å½•
 If b_c = False Then
-Msgbox "¹©Ó¦ÉÌÃû³Æ°üº¬ÌØÊâ×Ö·û  \ / : * ? ÎŞ·¨ÖÆ×÷PR£¬ÇëĞŞ¸Ä£º" & str1
-Msgbox "Special characters  \ / : * ? Can not Create PR£º" & str1
+Msgbox "ä¾›åº”å•†åç§°åŒ…å«ç‰¹æ®Šå­—ç¬¦  \ / : * ? æ— æ³•åˆ¶ä½œPRï¼Œè¯·ä¿®æ”¹ï¼š" & str1
+Msgbox "Special characters  \ / : * ? Can not Create PRï¼š" & str1
 Exit Sub
 End If
 
@@ -1730,13 +1730,13 @@ End If
 
 
 '=================================
-'»ú¼Ó¼ş(TKSE) ±ØĞëÓĞÍ¼ºÅ
+'æœºåŠ ä»¶(TKSE) å¿…é¡»æœ‰å›¾å·
 If mokc.Item("PR").Item("OEM_NAME").Count > 0 Then
 If Not (mokc.Item("PR").Item("OEM_NAME").Item("TKSE") Is Nothing) Then
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Count
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Item("TKID").Key
 If Len(str1) = 0 Then
-Msgbox "»ú¼Ó¼ş±ØĞëÓĞÍ¼ºÅ,¸ú×Ù±íĞĞºÅ£º" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Key
+Msgbox "æœºåŠ ä»¶å¿…é¡»æœ‰å›¾å·,è·Ÿè¸ªè¡¨è¡Œå·ï¼š" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Key
 Msgbox "TKSE MUST have TKID:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Key
 
 b_c = False
@@ -1744,10 +1744,10 @@ End If
 Next
 End If
 End If
-'»ú¼Ó¼ş(TKSE) ±ØĞëÓĞÍ¼ºÅ
+'æœºåŠ ä»¶(TKSE) å¿…é¡»æœ‰å›¾å·
 '=================================
 If b_c = False Then
-Msgbox "»ú¼Ó¼ş(TKSE)ÎŞµÙÉ­Í¼ºÅ,ÎŞ·¨ÖÆ×÷PR"
+Msgbox "æœºåŠ ä»¶(TKSE)æ— è’‚æ£®å›¾å·,æ— æ³•åˆ¶ä½œPR"
 Msgbox "TKSE MUST have TKID"
 Exit Sub
 End If
@@ -1755,7 +1755,7 @@ End If
 
 
 '=================================
-'·ÇNA£¬N/A¼ş£¬ĞÍºÅºÍTKID²»ÄÜÍ¬Ê±Îª¿Õ
+'éNAï¼ŒN/Aä»¶ï¼Œå‹å·å’ŒTKIDä¸èƒ½åŒæ—¶ä¸ºç©º
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("TKID").Key)
 str2 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("OEM_ID").Key)
@@ -1768,27 +1768,27 @@ Exit For
 End If
 End If
 Next
-'·ÇNA£¬N/A¼ş£¬ĞÍºÅºÍTKID²»ÄÜÍ¬Ê±Îª¿Õ
+'éNAï¼ŒN/Aä»¶ï¼Œå‹å·å’ŒTKIDä¸èƒ½åŒæ—¶ä¸ºç©º
 '=================================
 If b_c = False Then
-Msgbox "¶©»õºÅ²»ÄÜÎª¿Õ,ÎŞ·¨ÖÆ×÷PR"
+Msgbox "è®¢è´§å·ä¸èƒ½ä¸ºç©º,æ— æ³•åˆ¶ä½œPR"
 
 Msgbox "MUST have ShortText"
 Exit Sub
 End If
 
 
-'20181021 °´ĞÍºÅÅÅĞò
+'20181021 æŒ‰å‹å·æ’åº
 
 sort_pr mokc
-'20181021 °´ĞÍºÅÅÅĞò
+'20181021 æŒ‰å‹å·æ’åº
 
 
 
 '==============================
-'ÄÚ´æÖĞÖÆ×÷È«²¿PRµ¥×Ó
+'å†…å­˜ä¸­åˆ¶ä½œå…¨éƒ¨PRå•å­
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
-'Êä³öµ¥ÕÅPRµ¥
+'è¾“å‡ºå•å¼ PRå•
 
 
 
@@ -1805,7 +1805,7 @@ str1 = "PE" & mokc.Item("PR").Item("PRN_LAST").Key
 str2 = CStr(j)
 
 'str2 = Left("000", 4 - Len(str2)) & str2
-'20180530 ĞŞ¸ÄºÅÂë¸ñÊ½PE00010001ÎªPE0001.001
+'20180530 ä¿®æ”¹å·ç æ ¼å¼PE00010001ä¸ºPE0001.001
 str2 = Left(".00", 4 - Len(str2)) & str2
 
 str1 = str1 & str2
@@ -1813,12 +1813,12 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "C"
 
 
 'D
-'ShortText, »ú¼Ó¼ş TKID£¬Íâ¹º¼ş OEM_ID
-'1.»ú¼Ó¼ş=¡µTKID
-'2.Íâ¹º¼ş£¬Í¬Ê±ÓĞĞÍºÅ£¬ÓÖÓĞTKID,£¨×ö·¨£ºDÁĞĞÍºÅ£¬TKIDºÍÆäËûÄÚÈİºÏ²¢ÈëMEMO£©
-'3.Íâ¹º¼ş£¬½öÓĞĞÍºÅ
-'4.Íâ¹º¼ş£¬½öÓĞTKID
-'5.Íâ¹º¼ş£ºÃ»ĞÍºÅÒ²Ã»ÓĞTKID
+'ShortText, æœºåŠ ä»¶ TKIDï¼Œå¤–è´­ä»¶ OEM_ID
+'1.æœºåŠ ä»¶=ã€‰TKID
+'2.å¤–è´­ä»¶ï¼ŒåŒæ—¶æœ‰å‹å·ï¼Œåˆæœ‰TKID,ï¼ˆåšæ³•ï¼šDåˆ—å‹å·ï¼ŒTKIDå’Œå…¶ä»–å†…å®¹åˆå¹¶å…¥MEMOï¼‰
+'3.å¤–è´­ä»¶ï¼Œä»…æœ‰å‹å·
+'4.å¤–è´­ä»¶ï¼Œä»…æœ‰TKID
+'5.å¤–è´­ä»¶ï¼šæ²¡å‹å·ä¹Ÿæ²¡æœ‰TKID
 str1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Key
 If str1 = "TKSE" Then
 str2 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID").Key
@@ -1836,19 +1836,19 @@ End If
 
 
 'E
-'µçÆøµÄ´ËÁĞÎª¿Õ
+'ç”µæ°”çš„æ­¤åˆ—ä¸ºç©º
 'str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID_SUBASS").Key
 'mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "E"
 
 'F
-'Ö±½Ó½«OEM_NAME ÌîÈë
+'ç›´æ¥å°†OEM_NAME å¡«å…¥
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("OEM_NAME").Key
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "F"
 
 'G
-'Ãû³Æ
-'1.»ú¼Ó¼ş.TKID**Ãû³Æ
-'2.Íâ¹º¼ş ºÍ ÕÅì¿¹µÍ¨£¬ÌîĞ´ ¼¼Êõ²ÎÊı
+'åç§°
+'1.æœºåŠ ä»¶.TKID**åç§°
+'2.å¤–è´­ä»¶ å’Œ å¼ ç‚œæ²Ÿé€šï¼Œå¡«å†™ æŠ€æœ¯å‚æ•°
 
 str1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Key
 If str1 = "TKSE" Then
@@ -1867,7 +1867,7 @@ End If
 
 'H
 'CostUnit
-'Ê¹ÓÃ ¸ú×Ù±íÃû³Æ×ó±ß4Î» CN.3  & ¹¤Î»ºÅÄÚÏîÄ¿Ãû & 41 & ¹¤Î»ºÅÄÚ¹¤Î»Ãû
+'ä½¿ç”¨ è·Ÿè¸ªè¡¨åç§°å·¦è¾¹4ä½ CN.3  & å·¥ä½å·å†…é¡¹ç›®å & 41 & å·¥ä½å·å†…å·¥ä½å
 
 str3 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("WBS").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str3, "H"
@@ -1875,13 +1875,13 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str3, "H"
 
 
 'I
-'ÊıÁ¿
+'æ•°é‡
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("QTY").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "I"
 
 
 'J
-'µ¥Î»
+'å•ä½
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("UNIT").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "J"
 
@@ -1917,8 +1917,8 @@ End If
 
 
 
-'N·¢»õÆÚ
-'¸÷ÖÖÈÕÆÚ¸ñÊ½×ª»»
+'Nå‘è´§æœŸ
+'å„ç§æ—¥æœŸæ ¼å¼è½¬æ¢
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("E_DATE").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "N"
 
@@ -1926,8 +1926,8 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "N"
 
 
 
-'O±¸×¢
-'EÁĞºÏ²¢IÁĞºÏ²¢TÁĞ
+'Oå¤‡æ³¨
+'Eåˆ—åˆå¹¶Iåˆ—åˆå¹¶Tåˆ—
 
 
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("ItemName").Key) '5
@@ -1944,13 +1944,13 @@ If Len(str3) > 0 Then str1 = str1 & str3
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "O"
 
 
-'Èç¹û ¼¼Êõ²ÎÊıÁĞÎª¿Õ£¬Ò²¾ÍÊÇNAMEÁĞÎª¿Õ£¬Ôò½«±¸×¢ÁĞÅ²Èë¼¼Êõ²ÎÊıÁĞ
+'å¦‚æœ æŠ€æœ¯å‚æ•°åˆ—ä¸ºç©ºï¼Œä¹Ÿå°±æ˜¯NAMEåˆ—ä¸ºç©ºï¼Œåˆ™å°†å¤‡æ³¨åˆ—æŒªå…¥æŠ€æœ¯å‚æ•°åˆ—
 str1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("G").Key
 If Len(str1) = 0 Then
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("G").Key = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("O").Key
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("O").Key = ""
 End If
-'Èç¹û ¼¼Êõ²ÎÊıÁĞÎª¿Õ£¬Ò²¾ÍÊÇNAMEÁĞÎª¿Õ£¬Ôò½«±¸×¢ÁĞÅ²Èë¼¼Êõ²ÎÊıÁĞ
+'å¦‚æœ æŠ€æœ¯å‚æ•°åˆ—ä¸ºç©ºï¼Œä¹Ÿå°±æ˜¯NAMEåˆ—ä¸ºç©ºï¼Œåˆ™å°†å¤‡æ³¨åˆ—æŒªå…¥æŠ€æœ¯å‚æ•°åˆ—
 
 
 Next
@@ -1960,7 +1960,7 @@ Next
 
 
 
-'PRµ¥ºÅ¼Ó1
+'PRå•å·åŠ 1
 i_PRN_LAST = CInt(mokc.Item("PR").Item("PRN_LAST").Key)
 i_PRN_LAST = i_PRN_LAST + 1
 s_PRN_LAST = CStr(i_PRN_LAST)
@@ -1968,20 +1968,20 @@ If Len(s_PRN_LAST) < 4 Then
 s_PRN_LAST = Left("000", 4 - Len(s_PRN_LAST)) & s_PRN_LAST
 End If
 mokc.Item("PR").Item("PRN_LAST").Key = s_PRN_LAST
-'PRµ¥ºÅ¼Ó1
+'PRå•å·åŠ 1
 
  
 
 Next
-'ÄÚ´æÖĞÖÆ×÷È«²¿PRµ¥×Ó
+'å†…å­˜ä¸­åˆ¶ä½œå…¨éƒ¨PRå•å­
 '==============================
 
 
 '====================================
-'µ¥Ôª¸ñ³¤¶È½öÔÊĞí35£¬ÒıÆğµÄ¶Ô mokc.Item("PR").Item("OEM_NAME") µÄ´¦Àí
-'DÁĞ³¬³¤ ÓÃ..Á¬½ÓÖÁ£¬OÁĞ
-'GÁĞ³¬³¤ ÓÃ##Á¬½ÓÖÁ£¬OÁĞ
-'OÁĞ³¬³¤ ÓÃ^^ºÍÇ°ÃæµÄ·Ö¿ª£¬ÆäÓà·ÅÈë ×¢ÊÍ
+'å•å…ƒæ ¼é•¿åº¦ä»…å…è®¸35ï¼Œå¼•èµ·çš„å¯¹ mokc.Item("PR").Item("OEM_NAME") çš„å¤„ç†
+'Dåˆ—è¶…é•¿ ç”¨..è¿æ¥è‡³ï¼ŒOåˆ—
+'Gåˆ—è¶…é•¿ ç”¨##è¿æ¥è‡³ï¼ŒOåˆ—
+'Oåˆ—è¶…é•¿ ç”¨^^å’Œå‰é¢çš„åˆ†å¼€ï¼Œå…¶ä½™æ”¾å…¥ æ³¨é‡Š
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
 For j = 1 To mokc.Item("PR").Item("OEM_NAME").Item(i).Count
 s_t1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("D").Key
@@ -2016,7 +2016,7 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add s_t4, "Comment"
 End If
 Next
 Next
-'µ¥Ôª¸ñ³¤¶È½öÔÊĞí35£¬ÒıÆğµÄ¶Ô mokc.Item("PR").Item("OEM_NAME") µÄ´¦Àí
+'å•å…ƒæ ¼é•¿åº¦ä»…å…è®¸35ï¼Œå¼•èµ·çš„å¯¹ mokc.Item("PR").Item("OEM_NAME") çš„å¤„ç†
 '====================================
 
 
@@ -2027,13 +2027,13 @@ Next
 
 
 '==============================
-'ÄÚ´æÖĞPRµ¥£¬´æÖÁ´ÅÅÌPRÎÄ¼ş
-'´ò¿ªÄ£°å
+'å†…å­˜ä¸­PRå•ï¼Œå­˜è‡³ç£ç›˜PRæ–‡ä»¶
+'æ‰“å¼€æ¨¡æ¿
 
 
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
-'PRµ¥ÎÄ¼şÃû£ºPX1515_CN.305587-8-9_Spare parts_20170725.xlsm
-'PRµ¥ÎÄ¼şÃû£ºPX####_CN.######_OEM_NAME_YYYYMMDD.xlsm
+'PRå•æ–‡ä»¶åï¼šPX1515_CN.305587-8-9_Spare parts_20170725.xlsm
+'PRå•æ–‡ä»¶åï¼šPX####_CN.######_OEM_NAME_YYYYMMDD.xlsm
 str1 = Left(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(1).Item("C").Key, 6)
 
 
@@ -2047,10 +2047,10 @@ wb_pr.SaveAs mokc.Item("FL").Item("FDN").Item("FDNPR").Key & "\" & fln
 
 
 '=======================================
-'¸üÕıµ¥Ôª¸ñ£ºName of component .TK Internal Ident. number
+'æ›´æ­£å•å…ƒæ ¼ï¼šName of component .TK Internal Ident. number
 wb_pr.Worksheets(1).Range("D20") = "Vendor Part No."
 wb_pr.Worksheets(1).Range("G20") = "Name of component .TK Internal Ident. number"
-'¸üÕıµ¥Ôª¸ñ£ºName of component .TK Internal Ident. number
+'æ›´æ­£å•å…ƒæ ¼ï¼šName of component .TK Internal Ident. number
 '=======================================
 
 
@@ -2073,8 +2073,8 @@ wb_pr.Worksheets(1).Range("M3") = str1
 
 
 
-'ÏàÍ¬WBS£¬SHORTTEXT ĞèÒªºÏ²¢ÊıÁ¿£¬²ÉÈ¡µÄ²ßÂÔÊÇ£¬ÔÚÍùÎÄ¼şÖĞĞ´µÄ×îºóÒ»²½½« ¼ì²éÊÇ·ñ¿ÉÒÔºÏ²¢£¬¿ÉÒÔºÏ²¢ÔòºÏ²¢
-'i_PRN_LAST s_PRN_LAST ÊµÊ±¿ØÖÆPRµÄÌîĞ´ÄÚÈİ£¬ÎŞÊÓÔ­Ê¼Öµ
+'ç›¸åŒWBSï¼ŒSHORTTEXT éœ€è¦åˆå¹¶æ•°é‡ï¼Œé‡‡å–çš„ç­–ç•¥æ˜¯ï¼Œåœ¨å¾€æ–‡ä»¶ä¸­å†™çš„æœ€åä¸€æ­¥å°† æ£€æŸ¥æ˜¯å¦å¯ä»¥åˆå¹¶ï¼Œå¯ä»¥åˆå¹¶åˆ™åˆå¹¶
+'i_PRN_LAST s_PRN_LAST å®æ—¶æ§åˆ¶PRçš„å¡«å†™å†…å®¹ï¼Œæ— è§†åŸå§‹å€¼
 i_PRN_LAST = 1
 s_PRN_LAST = "1"
 Dim i_curr As Integer
@@ -2172,18 +2172,18 @@ If b_c Then
             wb_pr.Worksheets(1).Rows(20 + i_curr & ":" & 20 + i_curr).Interior.Color = 255
             End If
             
-            'ÔÚ×Ü±íÀïÃæ¼ÇÂ¼PRºÅ
+            'åœ¨æ€»è¡¨é‡Œé¢è®°å½•PRå·
             'ws_partsingle.Cells(CInt(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Key), CInt(mokc.Item("WS_PartSingle").Item("WS_HEAD").Item("PA_Index").Item(1).Key)) = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("C").Key
             ws_partsingle.Cells(CLng(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CLng(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Key), CLng(mokc.Item("WS_PartSingle").Item("WS_HEAD").Item("PA_Index").Item(1).Key)) = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("C").Key
             
-            'ÔÚ×Ü±íÀïÃæ¼ÇÂ¼PRºÅ
+            'åœ¨æ€»è¡¨é‡Œé¢è®°å½•PRå·
 End If
 
 
 Next
-'20180911 ÉèÖÃ´òÓ¡ÇøÓò
+'20180911 è®¾ç½®æ‰“å°åŒºåŸŸ
 wb_pr.Worksheets("PA").PageSetup.PrintArea = "$B$1:$O$" & i_curr + 20
-'20180911 ÉèÖÃ´òÓ¡ÇøÓò
+'20180911 è®¾ç½®æ‰“å°åŒºåŸŸ
 
 wb_pr.Save
 wb_pr.Close
@@ -2191,16 +2191,16 @@ wb_pr.Close
 
 Next
 
-'ÄÚ´æÖĞPRµ¥£¬´æÖÁ´ÅÅÌPRÎÄ¼ş
+'å†…å­˜ä¸­PRå•ï¼Œå­˜è‡³ç£ç›˜PRæ–‡ä»¶
 ''==============================
 
 
 wb_fl.Save
 
 
-'´ò¿ªÎÄ¼ş¼Ğ
+'æ‰“å¼€æ–‡ä»¶å¤¹
 Shell "explorer.exe " & mokc.Item("FL").Item("FDN").Item("FDNPR").Key, vbNormalFocus
-'´ò¿ªÎÄ¼ş¼Ğ
+'æ‰“å¼€æ–‡ä»¶å¤¹
 
 Workbooks("PR_Create_Tool.xlsm").Saved = True
 Workbooks("PR_Create_Tool.xlsm").Close
@@ -2209,7 +2209,7 @@ Workbooks("PR_Create_Tool.xlsm").Close
 End Sub
 
 '===========================
-'li YiFei, 20170908 Ìá³öCostUnit Èç¹ûĞÎÈç:CN.505778.001,ÏµÍ³»á×Ô¶¯¼Ó41
+'li YiFei, 20170908 æå‡ºCostUnit å¦‚æœå½¢å¦‚:CN.505778.001,ç³»ç»Ÿä¼šè‡ªåŠ¨åŠ 41
 Function COST_UNIT_check(str1 As String, Optional str2 As String = "") As String
 If Len(str1) = 13 Then
 If str1 Like "CN.??????.???" Then
@@ -2225,14 +2225,14 @@ End If
 End If
 COST_UNIT_check = str1
 End Function
-'li YiFei, 20170908 Ìá³öCostUnit Èç¹ûĞÎÈç:CN.505778.001,ÏµÍ³»á×Ô¶¯¼Ó41
+'li YiFei, 20170908 æå‡ºCostUnit å¦‚æœå½¢å¦‚:CN.505778.001,ç³»ç»Ÿä¼šè‡ªåŠ¨åŠ 41
 '===========================
 
 
 
 Sub PP_Creater()
 Attribute PP_Creater.VB_ProcData.VB_Invoke_Func = "p\n14"
-'±¾ºêÓÃÓÚ´´½¨Æø¶¯ PRµ¥×Ó
+'æœ¬å®ç”¨äºåˆ›å»ºæ°”åŠ¨ PRå•å­
 'MsgBox "WinShuttle Can Use again! Please UPload to SAP after Create PR!"
 back_followinglist
  If Enagble_addins("PPPP") Then
@@ -2262,7 +2262,7 @@ mokc.Item("FL").Add "CUR_PR_NUM", "CUR_PR_NUM"
 
 
 '=======================
-'ÕÒµ½ÒÑ¾­´ò¿ªµÄ»úĞµ¸ú×Ù±í
+'æ‰¾åˆ°å·²ç»æ‰“å¼€çš„æœºæ¢°è·Ÿè¸ªè¡¨
 Dim b_c As Boolean
 Dim str1 As String
 Dim str2 As String
@@ -2287,7 +2287,7 @@ Dim ws_partsingle As Worksheet
 Dim j As Long
 Dim j_last As Long
 
-'¶ÁÈ¡PartSingleÀïÃæµÄµ¥Ôª¸ñ
+'è¯»å–PartSingleé‡Œé¢çš„å•å…ƒæ ¼
 Dim POS As String
 Dim QTY As String
 Dim UNIT As String
@@ -2306,7 +2306,7 @@ Dim dbl_qty As Double
 
 
 
-'¶ÁÈ¡PartSingleÀïÃæµÄµ¥Ôª¸ñ
+'è¯»å–PartSingleé‡Œé¢çš„å•å…ƒæ ¼
 
 
 
@@ -2321,17 +2321,17 @@ Exit For
 End If
 Next
 If Not (wb_fl Is Nothing) Then
-Msgbox "ÖÆ×÷PRµÄ¸ú×Ù±íÎª£º" & Chr(10) & wb_fl.Name
+Msgbox "åˆ¶ä½œPRçš„è·Ÿè¸ªè¡¨ä¸ºï¼š" & Chr(10) & wb_fl.Name
 If wb_fl.ReadOnly = True Then
-Msgbox "Ö»¶Á¸ñÊ½µÄ¸ú×Ù±íÎŞ·¨ÖÆ×÷PR"
+Msgbox "åªè¯»æ ¼å¼çš„è·Ÿè¸ªè¡¨æ— æ³•åˆ¶ä½œPR"
 wb_fl.Close
 Exit Sub
 End If
 Else
-Msgbox "ÇëÏÈ´ò¿ª¸ú×Ù±í£º CN.*Pneumatics*Following.xlsm "
+Msgbox "è¯·å…ˆæ‰“å¼€è·Ÿè¸ªè¡¨ï¼š CN.*Pneumatics*Following.xlsm "
 Exit Sub
 End If
-'ÕÒµ½ÒÑ¾­´ò¿ªµÄ»úĞµ¸ú×Ù±í
+'æ‰¾åˆ°å·²ç»æ‰“å¼€çš„æœºæ¢°è·Ÿè¸ªè¡¨
 '=======================
 mokc.Item("FL").Item("FLN").Key = wb_fl.Name
 mokc.Item("FL").Item("FDN").Key = wb_fl.Path
@@ -2339,18 +2339,18 @@ If Right(mokc.Item("FL").Item("FDN").Key, 1) <> "\" Then
 mokc.Item("FL").Item("FDN").Key = mokc.Item("FL").Item("FDN").Key & "\"
 End If
 '=======================
-'Checking  ÎÄ¼ş¼ĞÊÇ·ñ´æÔÚ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
+'Checking  æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
 fdn = mokc.Item("FL").Item("FDN").Key & "PAX_Mechanical&H&P"
 mokc.Item("FL").Item("FDN").Item("FDNPR").Key = fdn
 If mfso.folderexists(fdn) = False Then
-If Msgbox("ÎÄ¼ş¼Ğ²»´æÔÚ:" & Chr(10) & fdn & Chr(10) & "ĞèÒª´´½¨µã OK ", vbOKCancel) = vbOK Then
+If Msgbox("æ–‡ä»¶å¤¹ä¸å­˜åœ¨:" & Chr(10) & fdn & Chr(10) & "éœ€è¦åˆ›å»ºç‚¹ OK ", vbOKCancel) = vbOK Then
 mfso.CreateFolder fdn
-Msgbox "ÒÑ¾­´´½¨ ÓÃÓÚ´æ·ÅPRµÄÎÄ¼ş¼Ğ:" & Chr(10) & mokc.Item("FL").Item("FDN").Key & "PAX_Mechanical&H&P" & Chr(10) & "ÇëÔÚ¸ÃÎÄ¼ş¼ĞÀïÃæ´æ·ÅÒ»ÕÅÈ·¶¨PRÆğÊ¼±àºÅµÄPRµ¥£¨Ä¬ÈÏ0001ºÅPRµ¥£©"
+Msgbox "å·²ç»åˆ›å»º ç”¨äºå­˜æ”¾PRçš„æ–‡ä»¶å¤¹:" & Chr(10) & mokc.Item("FL").Item("FDN").Key & "PAX_Mechanical&H&P" & Chr(10) & "è¯·åœ¨è¯¥æ–‡ä»¶å¤¹é‡Œé¢å­˜æ”¾ä¸€å¼ ç¡®å®šPRèµ·å§‹ç¼–å·çš„PRå•ï¼ˆé»˜è®¤0001å·PRå•ï¼‰"
 Else
 Exit Sub
 End If
 End If
-'Checking  ÎÄ¼ş¼ĞÊÇ·ñ´æÔÚ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
+'Checking  æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
 '=======================
 
 
@@ -2409,20 +2409,20 @@ mokc.Item("PR").Item("PRN_LAST").Key = s_PRN_LAST
 
 
 '=====================
-'¶ÁÈ¡ Part_single ±í¸ñ
-b_c = True ' b_c = True  Part_Single ¶ÁÈ¡³É¹¦£¬b_c = False  Part_Single ¶ÁÈ¡Ê§°Ü
+'è¯»å– Part_single è¡¨æ ¼
+b_c = True ' b_c = True  Part_Single è¯»å–æˆåŠŸï¼Œb_c = False  Part_Single è¯»å–å¤±è´¥
 mokc.Item("WS_PartSingle").Add "M_C_P", "M_C_P"
 'Record the pype: Controls or Mechanics or Pneumatics
-'²»´æÔÚ Parts_Single,Ê§°Ü
+'ä¸å­˜åœ¨ Parts_Single,å¤±è´¥
 If b_c Then
 If ws_exist(wb_fl, "Parts_Single") = False Then
 b_c = False
-Msgbox "Following list ,ÀïÃæ²»´æÔÚ¹¤×é±í Parts_Single"
+Msgbox "Following list ,é‡Œé¢ä¸å­˜åœ¨å·¥ç»„è¡¨ Parts_Single"
 Else
 Set ws_partsingle = wb_fl.Worksheets("Parts_Single")
 End If
 End If
-'ÎŞ·¨ÅĞ¶ÏÊÇ »ú or µç or Æø Ê§°Ü
+'æ— æ³•åˆ¤æ–­æ˜¯ æœº or ç”µ or æ°” å¤±è´¥
 If b_c Then
 If InStr(wb_fl.Name, "Mechanics") > 0 Then
 mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Mechanics"
@@ -2432,10 +2432,10 @@ ElseIf InStr(wb_fl.Name, "Pneumatics") > 0 Then
 mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Pneumatics"
 Else
 b_c = False
-Msgbox wb_fl.Name & Chr(10) & "Ãû³ÆÖĞ±ØĞë°üº¬ÒÔÏÂµ¥´ÊÖ®Ò»£ºMechanics »ò  Controls »ò Pneumatics"
+Msgbox wb_fl.Name & Chr(10) & "åç§°ä¸­å¿…é¡»åŒ…å«ä»¥ä¸‹å•è¯ä¹‹ä¸€ï¼šMechanics æˆ–  Controls æˆ– Pneumatics"
 End If
 End If
-'ÅĞ¶Ï Part_Single ¸ñÊ½ÊÇ·ñÊÇÔ¤ÖÃ¸ñÊ½
+'åˆ¤æ–­ Part_Single æ ¼å¼æ˜¯å¦æ˜¯é¢„ç½®æ ¼å¼
 If b_c Then
 If mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Controls" Then
 
@@ -2457,7 +2457,7 @@ If mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Controls" Then
 '    If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 19, "Release_date", "R_DATE") Then b_c = False
 '    If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 20, "Expect Week", "E_DATE") Then b_c = False
 '    If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 21, "description", "DESC") Then If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 21, "Description", "DESC") Then b_c = False
-'    If b_c = False Then MsgBox "Part_Single ±íÍ·ÎŞ·¨Ê¶±ğ"
+'    If b_c = False Then MsgBox "Part_Single è¡¨å¤´æ— æ³•è¯†åˆ«"
     
     
     
@@ -2484,9 +2484,9 @@ If mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Controls" Then
     
     'If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 17, "Station_Number", "TKID_STATION") Then b_c = False
     
-    'ĞÂÔö³É±¾ÖĞĞÄºÅÂë
+    'æ–°å¢æˆæœ¬ä¸­å¿ƒå·ç 
     If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 7, 15, "Cost Unit", "WBS") Then b_c = False
-    'ĞÂÔö³É±¾ÖĞĞÄºÅÂë
+    'æ–°å¢æˆæœ¬ä¸­å¿ƒå·ç 
     
     If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 7, 16, "PA_Index", "PA_Index") Then b_c = False
     
@@ -2496,7 +2496,7 @@ If mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Controls" Then
     
     
     If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 7, 20, "Description", "DESC") Then b_c = False
-    If b_c = False Then Msgbox "Part_Single ±íÍ·ÎŞ·¨Ê¶±ğ"
+    If b_c = False Then Msgbox "Part_Single è¡¨å¤´æ— æ³•è¯†åˆ«"
     
 ElseIf mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Pneumatics" Then
 
@@ -2524,9 +2524,9 @@ ElseIf mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Pneumatics" Then
     
     'If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 17, "Station_Number", "TKID_STATION") Then b_c = False
     
-    'ĞÂÔö³É±¾ÖĞĞÄºÅÂë
+    'æ–°å¢æˆæœ¬ä¸­å¿ƒå·ç 
     If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 7, 15, "Cost Unit", "WBS") Then b_c = False
-    'ĞÂÔö³É±¾ÖĞĞÄºÅÂë
+    'æ–°å¢æˆæœ¬ä¸­å¿ƒå·ç 
     
     If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 7, 16, "PA_Index", "PA_Index") Then b_c = False
     
@@ -2545,7 +2545,7 @@ End If
 
 
 If b_c = False Then
-Msgbox "ÎŞ·¨Ê¶±ğµÄ±íÍ·£¡"
+Msgbox "æ— æ³•è¯†åˆ«çš„è¡¨å¤´ï¼"
 Exit Sub
 End If
 
@@ -2557,7 +2557,7 @@ If b_c Then
 
 i_last = ws_partsingle.UsedRange.Rows(ws_partsingle.UsedRange.Rows.Count).row
 For i = 8 To i_last
-'¶ÁÈ¡ÊıÁ¿²»ÎªÁã£¬PA_Index Îª¿ÕµÄĞĞ
+'è¯»å–æ•°é‡ä¸ä¸ºé›¶ï¼ŒPA_Index ä¸ºç©ºçš„è¡Œ
 
 
 
@@ -2572,12 +2572,12 @@ OEM_NAME = Trim(ws_partsingle.Cells(i, CInt(mokc.Item("WS_PartSingle").Item("WS_
 dbl_qty = 0
 Str_TO_Dbl QTY, dbl_qty
 If Not (dbl_qty > 0) Then
-Msgbox "ÇëĞŞ¸ÄÊıÁ¿£¬ÊıÁ¿±ØĞë´óÓÚÁãĞĞºÅ£º" & i
+Msgbox "è¯·ä¿®æ”¹æ•°é‡ï¼Œæ•°é‡å¿…é¡»å¤§äºé›¶è¡Œå·ï¼š" & i
 b_c = False
 End If
 If b_c Then
 If Len(OEM_NAME) = 0 Then
-Msgbox "¹©Ó¦ÉÌÃû³Æ²»ÄÜÎª¿Õ£¬ĞĞºÅ£º" & i
+Msgbox "ä¾›åº”å•†åç§°ä¸èƒ½ä¸ºç©ºï¼Œè¡Œå·ï¼š" & i
 b_c = False
 End If
 If b_c Then
@@ -2611,11 +2611,11 @@ End If
 End If
 Next
 End If
-'¶ÁÈ¡ Part_single ±í¸ñ
+'è¯»å– Part_single è¡¨æ ¼
 '=====================
 
 If b_c = False Then
-Msgbox "¶ÁÈ¡ Part_Single Ê§°Ü£¬ÎŞ·¨ÖÆ×÷PR"
+Msgbox "è¯»å– Part_Single å¤±è´¥ï¼Œæ— æ³•åˆ¶ä½œPR"
 Exit Sub
 End If
 
@@ -2624,22 +2624,22 @@ End If
 
 
 '=====================
-'¼ì²éPR Ä£°åÊÇ·ñ´æÔÚ£¬²»´æÔÚ¿½±´Ò»·İµ½µ±Ç°Ä¿Â¼
+'æ£€æŸ¥PR æ¨¡æ¿æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ‹·è´ä¸€ä»½åˆ°å½“å‰ç›®å½•
 'Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm
 If mfso.FileExists(mokc.Item("FL").Item("FDN").Key & "\010c1612_Purchase Requisition.xlsm") Then
 Else
  If mfso.FileExists("Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm") Then
  mfso.copy_file "Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm", mokc.Item("FL").Item("FDN").Key & "\010c1612_Purchase Requisition.xlsm"
  Else
- Msgbox "ÎŞ PRÄ£°å£ºZ:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm"
+ Msgbox "æ—  PRæ¨¡æ¿ï¼šZ:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm"
  b_c = False
  End If
 End If
 mokc.Item("PR").Item("FLFP_TEMPLATE").Key = mokc.Item("FL").Item("FDN").Key & "\010c1612_Purchase Requisition.xlsm"
-'¼ì²éPR Ä£°åÊÇ·ñ´æÔÚ£¬²»´æÔÚ¿½±´Ò»·İµ½µ±Ç°Ä¿Â¼
+'æ£€æŸ¥PR æ¨¡æ¿æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ‹·è´ä¸€ä»½åˆ°å½“å‰ç›®å½•
 '=====================
 If b_c = False Then
-Msgbox "PR Ä£°å²»´æÔÚ£¬ÎŞ·¨ÖÆ×÷PR"
+Msgbox "PR æ¨¡æ¿ä¸å­˜åœ¨ï¼Œæ— æ³•åˆ¶ä½œPR"
 Exit Sub
 End If
 
@@ -2649,17 +2649,17 @@ End If
 
 
 '==============================
-'¼ì²éÄ£°åÖĞÏîÄ¿ÃûÏîÄ¿ºÅÊÇ·ñ´æÔÚ£¬²»´æÔÚÒªÇóÊäÈë
+'æ£€æŸ¥æ¨¡æ¿ä¸­é¡¹ç›®åé¡¹ç›®å·æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨è¦æ±‚è¾“å…¥
 If open_wb(wb_pr, mokc.Item("PR").Item("FLFP_TEMPLATE").Key) Then
 str1 = wb_pr.Worksheets(1).Range("G7")
 Do While Len(str1) = 0
-str1 = InputBox("ÇëÊäÈëÏîÄ¿ºÅ", "PR Ä£°åĞÅÏ¢ÌîĞ´", "CN.#######")
+str1 = InputBox("è¯·è¾“å…¥é¡¹ç›®å·", "PR æ¨¡æ¿ä¿¡æ¯å¡«å†™", "CN.#######")
 If str1 = "CN.#######" Then str1 = ""
 Loop
 wb_pr.Worksheets(1).Range("G7") = str1
 str1 = wb_pr.Worksheets(1).Range("M7")
 Do While Len(str1) = 0
-str1 = InputBox("ÇëÊäÈëÏîÄ¿Ãû³Æ", "PR Ä£°åĞÅÏ¢ÌîĞ´")
+str1 = InputBox("è¯·è¾“å…¥é¡¹ç›®åç§°", "PR æ¨¡æ¿ä¿¡æ¯å¡«å†™")
 Loop
 wb_pr.Worksheets(1).Range("M7") = str1
 wb_pr.Save
@@ -2668,10 +2668,10 @@ wb_pr.Close
 Else
 b_c = False
 End If
-'¼ì²éÄ£°åÖĞÏîÄ¿ÃûÏîÄ¿ºÅÊÇ·ñ´æÔÚ£¬²»´æÔÚÒªÇóÊäÈë
+'æ£€æŸ¥æ¨¡æ¿ä¸­é¡¹ç›®åé¡¹ç›®å·æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨è¦æ±‚è¾“å…¥
 '==============================
 If b_c = False Then
-Msgbox "PR Ä£°å ÖĞÏîÄ¿Ãû³Æ£¬ºÍÏîÄ¿ºÅÎ´ÌîĞ´"
+Msgbox "PR æ¨¡æ¿ ä¸­é¡¹ç›®åç§°ï¼Œå’Œé¡¹ç›®å·æœªå¡«å†™"
 Exit Sub
 End If
 
@@ -2682,7 +2682,7 @@ End If
 
 
 '============================
-'µ¥Î» ¼ì²é
+'å•ä½ æ£€æŸ¥
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = UNIT_check(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("UNIT").Key)
 If Len(str1) = 0 Then
@@ -2693,17 +2693,17 @@ mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("UNIT").Key = str1
 End If
 Next
 
-'µ¥Î» ¼ì²é
+'å•ä½ æ£€æŸ¥
 '============================
 If b_c = False Then
-Msgbox "µ¥Î»¼ì²é Ê§°Ü " & Chr(10) & "ĞĞºÅ:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "å•ä½æ£€æŸ¥ å¤±è´¥ " & Chr(10) & "è¡Œå·:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit Sub
 End If
 
 
 
 '============================
-'µ½»õÈÕÆÚ ¼ì²é
+'åˆ°è´§æ—¥æœŸ æ£€æŸ¥
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("E_DATE").Key
 If Len(str1) = 0 Then
@@ -2713,10 +2713,10 @@ Else
 End If
 Next
 
-'µ½»õÈÕÆÚ ¼ì²é
+'åˆ°è´§æ—¥æœŸ æ£€æŸ¥
 '============================
 If b_c = False Then
-Msgbox "µ½»õÈÕÆÚ¼ì²é Ê§°Ü " & Chr(10) & "ĞĞºÅ:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "åˆ°è´§æ—¥æœŸæ£€æŸ¥ å¤±è´¥ " & Chr(10) & "è¡Œå·:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit Sub
 End If
 
@@ -2724,7 +2724,7 @@ End If
 
 
 '============================
-'COST_UNIT ¼ì²é
+'COST_UNIT æ£€æŸ¥
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = COST_UNIT_check(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("WBS").Key, mokc.Item("FL").Item("FLN").Key)
 If Len(str1) = 0 Then
@@ -2735,10 +2735,10 @@ mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("WBS").Key = str1
 End If
 Next
 
-'COST_UNIT ¼ì²é
+'COST_UNIT æ£€æŸ¥
 '============================
 If b_c = False Then
-Msgbox "³É±¾ÖĞĞÄºÅ¶ÁÈ¡ Ê§°Ü " & Chr(10) & "ĞĞºÅ:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "æˆæœ¬ä¸­å¿ƒå·è¯»å– å¤±è´¥ " & Chr(10) & "è¡Œå·:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit Sub
 End If
 
@@ -2748,7 +2748,7 @@ End If
 
 
 '============================
-'¹©Ó¦ÉÌÃû³Æ ¼ì²é¼°·ÖÀà
+'ä¾›åº”å•†åç§° æ£€æŸ¥åŠåˆ†ç±»
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = OEM_NAME_check(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("OEM_NAME").Key)
 If Len(str1) = 0 Then
@@ -2767,34 +2767,34 @@ Else
 mokc.Item("PR").Item("OEM_NAME").Item(str1).Add CStr(i), CStr(i)
 End If
 Next
-'¹©Ó¦ÉÌÃû³Æ ¼ì²é¼°·ÖÀà
+'ä¾›åº”å•†åç§° æ£€æŸ¥åŠåˆ†ç±»
 '============================
 If b_c = False Then
-Msgbox "¶ÁÈ¡ ¹©Ó¦ÉÌ¼ì²é Ê§°Ü£¬ÎŞ·¨ÖÆ×÷PR" & Chr(10) & "ĞĞºÅ:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "è¯»å– ä¾›åº”å•†æ£€æŸ¥ å¤±è´¥ï¼Œæ— æ³•åˆ¶ä½œPR" & Chr(10) & "è¡Œå·:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit Sub
 End If
 
 
 '============================
-'±ê×¼¼ş ºÍ ÆäËû PA ±ØĞë·Ö¿ªÏÂ
+'æ ‡å‡†ä»¶ å’Œ å…¶ä»– PA å¿…é¡»åˆ†å¼€ä¸‹
 If mokc.Item("PR").Item("OEM_NAME").Count > 1 Then
 If Not (mokc.Item("PR").Item("OEM_NAME").Item("NA") Is Nothing) Then
-Msgbox "ĞĞºÅ£º" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("NA").Item(1).Key)).Key
+Msgbox "è¡Œå·ï¼š" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("NA").Item(1).Key)).Key
 b_c = False
 End If
 End If
-'±ê×¼¼ş ºÍ ÆäËû PA ±ØĞë·Ö¿ªÏÂ
+'æ ‡å‡†ä»¶ å’Œ å…¶ä»– PA å¿…é¡»åˆ†å¼€ä¸‹
 '============================
 If b_c = False Then
-Msgbox "±ê×¼¼ş(NA)£¬±ØĞëºÍ·Ç±ê×¼¼ş·Ö¿ªÏÂ"
+Msgbox "æ ‡å‡†ä»¶(NA)ï¼Œå¿…é¡»å’Œéæ ‡å‡†ä»¶åˆ†å¼€ä¸‹"
 Exit Sub
 End If
 
 
 
 '=====================
-'N/A Ö±½Ó ÌîĞ´ N/A
-'¹©Ó¦ÉÌÃû³Æ²»ÄÜ°üº¬ÌØÊâ×Ö·û
+'N/A ç›´æ¥ å¡«å†™ N/A
+'ä¾›åº”å•†åç§°ä¸èƒ½åŒ…å«ç‰¹æ®Šå­—ç¬¦
 If mokc.Item("PR").Item("OEM_NAME").Count > 1 Then
 If Not (mokc.Item("PR").Item("OEM_NAME").Item("N/A") Is Nothing) Then
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Item("N/A").Count
@@ -2814,12 +2814,12 @@ If InStr(str1, ":") > 0 Then b_c = False
 If InStr(str1, "?") > 0 Then b_c = False
 If b_c = False Then Exit For
 Next
-'N/A Ö±½Ó ÌîĞ´ N/A
-'¹©Ó¦ÉÌÃû³Æ²»ÄÜ°üº¬ÌØÊâ×Ö·û
+'N/A ç›´æ¥ å¡«å†™ N/A
+'ä¾›åº”å•†åç§°ä¸èƒ½åŒ…å«ç‰¹æ®Šå­—ç¬¦
 '=====================
-'¼ì²éPR Ä£°åÊÇ·ñ´æÔÚ£¬²»´æÔÚ¿½±´Ò»·İµ½µ±Ç°Ä¿Â¼
+'æ£€æŸ¥PR æ¨¡æ¿æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ‹·è´ä¸€ä»½åˆ°å½“å‰ç›®å½•
 If b_c = False Then
-Msgbox "¹©Ó¦ÉÌÃû³Æ°üº¬ÌØÊâ×Ö·û  \ / : * ? ÎŞ·¨ÖÆ×÷PR£¬ÇëĞŞ¸Ä£º" & str1
+Msgbox "ä¾›åº”å•†åç§°åŒ…å«ç‰¹æ®Šå­—ç¬¦  \ / : * ? æ— æ³•åˆ¶ä½œPRï¼Œè¯·ä¿®æ”¹ï¼š" & str1
 Exit Sub
 End If
 
@@ -2828,29 +2828,29 @@ End If
 
 
 '=================================
-'»ú¼Ó¼ş(TKSE) ±ØĞëÓĞÍ¼ºÅ
+'æœºåŠ ä»¶(TKSE) å¿…é¡»æœ‰å›¾å·
 If mokc.Item("PR").Item("OEM_NAME").Count > 0 Then
 If Not (mokc.Item("PR").Item("OEM_NAME").Item("TKSE") Is Nothing) Then
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Count
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Item("TKID").Key
 If Len(str1) = 0 Then
-Msgbox "»ú¼Ó¼ş±ØĞëÓĞÍ¼ºÅ,¸ú×Ù±íĞĞºÅ£º" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Key
+Msgbox "æœºåŠ ä»¶å¿…é¡»æœ‰å›¾å·,è·Ÿè¸ªè¡¨è¡Œå·ï¼š" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Key
 b_c = False
 End If
 Next
 End If
 End If
-'»ú¼Ó¼ş(TKSE) ±ØĞëÓĞÍ¼ºÅ
+'æœºåŠ ä»¶(TKSE) å¿…é¡»æœ‰å›¾å·
 '=================================
 If b_c = False Then
-Msgbox "»ú¼Ó¼ş(TKSE)ÎŞµÙÉ­Í¼ºÅ,ÎŞ·¨ÖÆ×÷PR"
+Msgbox "æœºåŠ ä»¶(TKSE)æ— è’‚æ£®å›¾å·,æ— æ³•åˆ¶ä½œPR"
 Exit Sub
 End If
 
 
 
 '=================================
-'·ÇNA£¬N/A¼ş£¬ĞÍºÅºÍTKID²»ÄÜÍ¬Ê±Îª¿Õ
+'éNAï¼ŒN/Aä»¶ï¼Œå‹å·å’ŒTKIDä¸èƒ½åŒæ—¶ä¸ºç©º
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("TKID").Key)
 str2 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("OEM_ID").Key)
@@ -2858,28 +2858,28 @@ str3 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("OEM_NAME").Key
 If (str3 <> "NA") Or (str3 <> "N/A") Then
 If Len(str1) = 0 And Len(str2) = 0 Then
 b_c = False
-Msgbox "·Ç±ê¼ş£¬ĞÍºÅ£¬µÙÉ­ºÅ²»ÄÜÍ¬Ê±Îª¿Õ¡£¼ì²éĞĞ£º" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "éæ ‡ä»¶ï¼Œå‹å·ï¼Œè’‚æ£®å·ä¸èƒ½åŒæ—¶ä¸ºç©ºã€‚æ£€æŸ¥è¡Œï¼š" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit For
 End If
 End If
 Next
-'·ÇNA£¬N/A¼ş£¬ĞÍºÅºÍTKID²»ÄÜÍ¬Ê±Îª¿Õ
+'éNAï¼ŒN/Aä»¶ï¼Œå‹å·å’ŒTKIDä¸èƒ½åŒæ—¶ä¸ºç©º
 '=================================
 If b_c = False Then
-Msgbox "¶©»õºÅ²»ÄÜÎª¿Õ,ÎŞ·¨ÖÆ×÷PR"
+Msgbox "è®¢è´§å·ä¸èƒ½ä¸ºç©º,æ— æ³•åˆ¶ä½œPR"
 Exit Sub
 End If
 
-'20181021 ĞÍºÅÅÅĞò
+'20181021 å‹å·æ’åº
 sort_pr mokc
-'20181021 ĞÍºÅÅÅĞò
+'20181021 å‹å·æ’åº
 
 
 
 '==============================
-'ÄÚ´æÖĞÖÆ×÷È«²¿PRµ¥×Ó
+'å†…å­˜ä¸­åˆ¶ä½œå…¨éƒ¨PRå•å­
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
-'Êä³öµ¥ÕÅPRµ¥
+'è¾“å‡ºå•å¼ PRå•
 
 
 
@@ -2897,7 +2897,7 @@ str2 = CStr(j)
 
 
 'str2 = Left("000", 4 - Len(str2)) & str2
-'20180530 ĞŞ¸ÄºÅÂë¸ñÊ½PX00010001ÎªPX0001.001
+'20180530 ä¿®æ”¹å·ç æ ¼å¼PX00010001ä¸ºPX0001.001
 str2 = Left(".00", 4 - Len(str2)) & str2
 
 
@@ -2907,12 +2907,12 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "C"
 
 
 'D
-'ShortText, »ú¼Ó¼ş TKID£¬Íâ¹º¼ş OEM_ID
-'1.»ú¼Ó¼ş=¡µTKID
-'2.Íâ¹º¼ş£¬Í¬Ê±ÓĞĞÍºÅ£¬ÓÖÓĞTKID,£¨×ö·¨£ºDÁĞĞÍºÅ£¬TKIDºÍÆäËûÄÚÈİºÏ²¢ÈëMEMO£©
-'3.Íâ¹º¼ş£¬½öÓĞĞÍºÅ
-'4.Íâ¹º¼ş£¬½öÓĞTKID
-'5.Íâ¹º¼ş£ºÃ»ĞÍºÅÒ²Ã»ÓĞTKID
+'ShortText, æœºåŠ ä»¶ TKIDï¼Œå¤–è´­ä»¶ OEM_ID
+'1.æœºåŠ ä»¶=ã€‰TKID
+'2.å¤–è´­ä»¶ï¼ŒåŒæ—¶æœ‰å‹å·ï¼Œåˆæœ‰TKID,ï¼ˆåšæ³•ï¼šDåˆ—å‹å·ï¼ŒTKIDå’Œå…¶ä»–å†…å®¹åˆå¹¶å…¥MEMOï¼‰
+'3.å¤–è´­ä»¶ï¼Œä»…æœ‰å‹å·
+'4.å¤–è´­ä»¶ï¼Œä»…æœ‰TKID
+'5.å¤–è´­ä»¶ï¼šæ²¡å‹å·ä¹Ÿæ²¡æœ‰TKID
 str1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Key
 If str1 = "TKSE" Then
 str2 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID").Key
@@ -2930,19 +2930,19 @@ End If
 
 
 'E
-'µçÆøµÄ´ËÁĞÎª¿Õ
+'ç”µæ°”çš„æ­¤åˆ—ä¸ºç©º
 'str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID_SUBASS").Key
 'mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "E"
 
 'F
-'Ö±½Ó½«OEM_NAME ÌîÈë
+'ç›´æ¥å°†OEM_NAME å¡«å…¥
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("OEM_NAME").Key
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "F"
 
 'G
-'Ãû³Æ
-'1.»ú¼Ó¼ş.TKID**Ãû³Æ
-'2.Íâ¹º¼ş ºÍ ÕÅì¿¹µÍ¨£¬ÌîĞ´ ¼¼Êõ²ÎÊı
+'åç§°
+'1.æœºåŠ ä»¶.TKID**åç§°
+'2.å¤–è´­ä»¶ å’Œ å¼ ç‚œæ²Ÿé€šï¼Œå¡«å†™ æŠ€æœ¯å‚æ•°
 
 str1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Key
 If str1 = "TKSE" Then
@@ -2961,7 +2961,7 @@ End If
 
 'H
 'CostUnit
-'Ê¹ÓÃ ¸ú×Ù±íÃû³Æ×ó±ß4Î» CN.3  & ¹¤Î»ºÅÄÚÏîÄ¿Ãû & 41 & ¹¤Î»ºÅÄÚ¹¤Î»Ãû
+'ä½¿ç”¨ è·Ÿè¸ªè¡¨åç§°å·¦è¾¹4ä½ CN.3  & å·¥ä½å·å†…é¡¹ç›®å & 41 & å·¥ä½å·å†…å·¥ä½å
 
 str3 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("WBS").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str3, "H"
@@ -2969,13 +2969,13 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str3, "H"
 
 
 'I
-'ÊıÁ¿
+'æ•°é‡
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("QTY").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "I"
 
 
 'J
-'µ¥Î»
+'å•ä½
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("UNIT").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "J"
 
@@ -3011,8 +3011,8 @@ End If
 
 
 
-'N·¢»õÆÚ
-'¸÷ÖÖÈÕÆÚ¸ñÊ½×ª»»
+'Nå‘è´§æœŸ
+'å„ç§æ—¥æœŸæ ¼å¼è½¬æ¢
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("E_DATE").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "N"
 
@@ -3020,8 +3020,8 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "N"
 
 
 
-'O±¸×¢
-'EÁĞºÏ²¢IÁĞºÏ²¢TÁĞ
+'Oå¤‡æ³¨
+'Eåˆ—åˆå¹¶Iåˆ—åˆå¹¶Tåˆ—
 
 
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("ItemName").Key) '5
@@ -3038,13 +3038,13 @@ If Len(str3) > 0 Then str1 = str1 & str3
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "O"
 
 
-'Èç¹û ¼¼Êõ²ÎÊıÁĞÎª¿Õ£¬Ò²¾ÍÊÇNAMEÁĞÎª¿Õ£¬Ôò½«±¸×¢ÁĞÅ²Èë¼¼Êõ²ÎÊıÁĞ
+'å¦‚æœ æŠ€æœ¯å‚æ•°åˆ—ä¸ºç©ºï¼Œä¹Ÿå°±æ˜¯NAMEåˆ—ä¸ºç©ºï¼Œåˆ™å°†å¤‡æ³¨åˆ—æŒªå…¥æŠ€æœ¯å‚æ•°åˆ—
 str1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("G").Key
 If Len(str1) = 0 Then
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("G").Key = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("O").Key
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("O").Key = ""
 End If
-'Èç¹û ¼¼Êõ²ÎÊıÁĞÎª¿Õ£¬Ò²¾ÍÊÇNAMEÁĞÎª¿Õ£¬Ôò½«±¸×¢ÁĞÅ²Èë¼¼Êõ²ÎÊıÁĞ
+'å¦‚æœ æŠ€æœ¯å‚æ•°åˆ—ä¸ºç©ºï¼Œä¹Ÿå°±æ˜¯NAMEåˆ—ä¸ºç©ºï¼Œåˆ™å°†å¤‡æ³¨åˆ—æŒªå…¥æŠ€æœ¯å‚æ•°åˆ—
 
 
 Next
@@ -3054,7 +3054,7 @@ Next
 
 
 
-'PRµ¥ºÅ¼Ó1
+'PRå•å·åŠ 1
 i_PRN_LAST = CInt(mokc.Item("PR").Item("PRN_LAST").Key)
 i_PRN_LAST = i_PRN_LAST + 1
 s_PRN_LAST = CStr(i_PRN_LAST)
@@ -3062,20 +3062,20 @@ If Len(s_PRN_LAST) < 4 Then
 s_PRN_LAST = Left("000", 4 - Len(s_PRN_LAST)) & s_PRN_LAST
 End If
 mokc.Item("PR").Item("PRN_LAST").Key = s_PRN_LAST
-'PRµ¥ºÅ¼Ó1
+'PRå•å·åŠ 1
 
  
 
 Next
-'ÄÚ´æÖĞÖÆ×÷È«²¿PRµ¥×Ó
+'å†…å­˜ä¸­åˆ¶ä½œå…¨éƒ¨PRå•å­
 '==============================
 
 
 '====================================
-'µ¥Ôª¸ñ³¤¶È½öÔÊĞí35£¬ÒıÆğµÄ¶Ô mokc.Item("PR").Item("OEM_NAME") µÄ´¦Àí
-'DÁĞ³¬³¤ ÓÃ..Á¬½ÓÖÁ£¬OÁĞ
-'GÁĞ³¬³¤ ÓÃ##Á¬½ÓÖÁ£¬OÁĞ
-'OÁĞ³¬³¤ ÓÃ^^ºÍÇ°ÃæµÄ·Ö¿ª£¬ÆäÓà·ÅÈë ×¢ÊÍ
+'å•å…ƒæ ¼é•¿åº¦ä»…å…è®¸35ï¼Œå¼•èµ·çš„å¯¹ mokc.Item("PR").Item("OEM_NAME") çš„å¤„ç†
+'Dåˆ—è¶…é•¿ ç”¨..è¿æ¥è‡³ï¼ŒOåˆ—
+'Gåˆ—è¶…é•¿ ç”¨##è¿æ¥è‡³ï¼ŒOåˆ—
+'Oåˆ—è¶…é•¿ ç”¨^^å’Œå‰é¢çš„åˆ†å¼€ï¼Œå…¶ä½™æ”¾å…¥ æ³¨é‡Š
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
 For j = 1 To mokc.Item("PR").Item("OEM_NAME").Item(i).Count
 s_t1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("D").Key
@@ -3110,7 +3110,7 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add s_t4, "Comment"
 End If
 Next
 Next
-'µ¥Ôª¸ñ³¤¶È½öÔÊĞí35£¬ÒıÆğµÄ¶Ô mokc.Item("PR").Item("OEM_NAME") µÄ´¦Àí
+'å•å…ƒæ ¼é•¿åº¦ä»…å…è®¸35ï¼Œå¼•èµ·çš„å¯¹ mokc.Item("PR").Item("OEM_NAME") çš„å¤„ç†
 '====================================
 
 
@@ -3121,13 +3121,13 @@ Next
 
 
 '==============================
-'ÄÚ´æÖĞPRµ¥£¬´æÖÁ´ÅÅÌPRÎÄ¼ş
-'´ò¿ªÄ£°å
+'å†…å­˜ä¸­PRå•ï¼Œå­˜è‡³ç£ç›˜PRæ–‡ä»¶
+'æ‰“å¼€æ¨¡æ¿
 
 
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
-'PRµ¥ÎÄ¼şÃû£ºPX1515_CN.305587-8-9_Spare parts_20170725.xlsm
-'PRµ¥ÎÄ¼şÃû£ºPX####_CN.######_OEM_NAME_YYYYMMDD.xlsm
+'PRå•æ–‡ä»¶åï¼šPX1515_CN.305587-8-9_Spare parts_20170725.xlsm
+'PRå•æ–‡ä»¶åï¼šPX####_CN.######_OEM_NAME_YYYYMMDD.xlsm
 str1 = Left(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(1).Item("C").Key, 6)
 
 
@@ -3141,10 +3141,10 @@ wb_pr.SaveAs mokc.Item("FL").Item("FDN").Item("FDNPR").Key & "\" & fln
 
 
 '=======================================
-'¸üÕıµ¥Ôª¸ñ£ºName of component .TK Internal Ident. number
+'æ›´æ­£å•å…ƒæ ¼ï¼šName of component .TK Internal Ident. number
 wb_pr.Worksheets(1).Range("D20") = "Vendor Part No."
 wb_pr.Worksheets(1).Range("G20") = "Name of component .TK Internal Ident. number"
-'¸üÕıµ¥Ôª¸ñ£ºName of component .TK Internal Ident. number
+'æ›´æ­£å•å…ƒæ ¼ï¼šName of component .TK Internal Ident. number
 '=======================================
 
 
@@ -3167,10 +3167,10 @@ wb_pr.Worksheets(1).Range("M3") = str1
 
 
 
-'ÏàÍ¬WBS£¬SHORTTEXT ĞèÒªºÏ²¢ÊıÁ¿£¬²ÉÈ¡µÄ²ßÂÔÊÇ£¬ÔÚÍùÎÄ¼şÖĞĞ´µÄ×îºóÒ»²½½« ¼ì²éÊÇ·ñ¿ÉÒÔºÏ²¢£¬¿ÉÒÔºÏ²¢ÔòºÏ²¢
-'i_PRN_LAST s_PRN_LAST ÊµÊ±¿ØÖÆPRµÄÌîĞ´ÄÚÈİ£¬ÎŞÊÓÔ­Ê¼Öµ
+'ç›¸åŒWBSï¼ŒSHORTTEXT éœ€è¦åˆå¹¶æ•°é‡ï¼Œé‡‡å–çš„ç­–ç•¥æ˜¯ï¼Œåœ¨å¾€æ–‡ä»¶ä¸­å†™çš„æœ€åä¸€æ­¥å°† æ£€æŸ¥æ˜¯å¦å¯ä»¥åˆå¹¶ï¼Œå¯ä»¥åˆå¹¶åˆ™åˆå¹¶
+'i_PRN_LAST s_PRN_LAST å®æ—¶æ§åˆ¶PRçš„å¡«å†™å†…å®¹ï¼Œæ— è§†åŸå§‹å€¼
 
-'ÒòÎªÈç¹ûShortText³¬¹ı35»á±»½Ø¶Ï£¬µ¼ÖÂÔ­±¾²»Í¬µÄĞÍºÅ£¬±»ÎóÈÏÎªÏàÍ¬¶øºÏ²¢ÊıÁ¿¡£ËùÒÔÒªÈ«²¿ÏàÍ¬²ÅºÏ²¢ÊıÁ¿
+'å› ä¸ºå¦‚æœShortTextè¶…è¿‡35ä¼šè¢«æˆªæ–­ï¼Œå¯¼è‡´åŸæœ¬ä¸åŒçš„å‹å·ï¼Œè¢«è¯¯è®¤ä¸ºç›¸åŒè€Œåˆå¹¶æ•°é‡ã€‚æ‰€ä»¥è¦å…¨éƒ¨ç›¸åŒæ‰åˆå¹¶æ•°é‡
 
 i_PRN_LAST = 1
 s_PRN_LAST = "1"
@@ -3271,11 +3271,11 @@ If b_c Then
             wb_pr.Worksheets(1).Rows(20 + i_curr & ":" & 20 + i_curr).Interior.Color = 255
             End If
             
-            'ÔÚ×Ü±íÀïÃæ¼ÇÂ¼PRºÅ
+            'åœ¨æ€»è¡¨é‡Œé¢è®°å½•PRå·
             'ws_partsingle.Cells(CInt(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Key), CInt(mokc.Item("WS_PartSingle").Item("WS_HEAD").Item("PA_Index").Item(1).Key)) = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("C").Key
             ws_partsingle.Cells(CInt(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Key), CInt(mokc.Item("WS_PartSingle").Item("WS_HEAD").Item("PA_Index").Item(1).Key)) = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("C").Key
             
-            'ÔÚ×Ü±íÀïÃæ¼ÇÂ¼PRºÅ
+            'åœ¨æ€»è¡¨é‡Œé¢è®°å½•PRå·
 End If
 
 
@@ -3287,16 +3287,16 @@ wb_pr.Close
 
 Next
 
-'ÄÚ´æÖĞPRµ¥£¬´æÖÁ´ÅÅÌPRÎÄ¼ş
+'å†…å­˜ä¸­PRå•ï¼Œå­˜è‡³ç£ç›˜PRæ–‡ä»¶
 ''==============================
 
 
 wb_fl.Save
 
 
-'´ò¿ªÎÄ¼ş¼Ğ
+'æ‰“å¼€æ–‡ä»¶å¤¹
 Shell "explorer.exe " & mokc.Item("FL").Item("FDN").Item("FDNPR").Key, vbNormalFocus
-'´ò¿ªÎÄ¼ş¼Ğ
+'æ‰“å¼€æ–‡ä»¶å¤¹
 
 Workbooks("PR_Create_Tool.xlsm").Saved = True
 Workbooks("PR_Create_Tool.xlsm").Close
@@ -3308,7 +3308,7 @@ End Sub
 Sub PRNA_Creater()
 Attribute PRNA_Creater.VB_ProcData.VB_Invoke_Func = "a\n14"
 
-'±¾ºêÓÃÓÚÖÆ×÷±ê×¼¼şµÄPRµ¥×Ó£¬Âİ¶¤ÂİÄ¸
+'æœ¬å®ç”¨äºåˆ¶ä½œæ ‡å‡†ä»¶çš„PRå•å­ï¼Œèºé’‰èºæ¯
 
 
 Dim wb_pr As Workbook
@@ -3339,7 +3339,7 @@ Dim temp_s1 As String, temp_s2 As String, temp_s3 As String, temp_s4 As String
 
 
 '=======================
-'ÕÒµ½ÒÑ¾­´ò¿ªµÄ»úĞµ¸ú×Ù±í
+'æ‰¾åˆ°å·²ç»æ‰“å¼€çš„æœºæ¢°è·Ÿè¸ªè¡¨
 Dim b_c As Boolean
 Dim str1 As String
 Dim str2 As String
@@ -3364,7 +3364,7 @@ Dim ws_partsingle As Worksheet
 Dim j As Long
 Dim j_last As Long
 
-'¶ÁÈ¡PartSingleÀïÃæµÄµ¥Ôª¸ñ
+'è¯»å–PartSingleé‡Œé¢çš„å•å…ƒæ ¼
 Dim POS As String
 Dim QTY As String
 Dim UNIT As String
@@ -3385,7 +3385,7 @@ Dim dbl_qty As Double
 
 
 
-'¶ÁÈ¡NA¿â
+'è¯»å–NAåº“
 Dim ws_na As Worksheet
 temp_s1 = "PR_Create_Tool.xlsm"
 temp_s2 = "NA"
@@ -3399,11 +3399,11 @@ ws_na.Range("D1") = "XH_STD"
 mokc_read_ws mokc.Item("BZ"), ws_na, 1, 2
 mokc_read_ws mokc.Item("XH"), ws_na, 3, 4
 
-'¶ÁÈ¡NA¿â
+'è¯»å–NAåº“
 
 
 
-'¶ÁÈ¡PartSingleÀïÃæµÄµ¥Ôª¸ñ
+'è¯»å–PartSingleé‡Œé¢çš„å•å…ƒæ ¼
 
 
 
@@ -3420,17 +3420,17 @@ Exit For
 End If
 Next
 If Not (wb_fl Is Nothing) Then
-Msgbox "ÖÆ×÷PRµÄ¸ú×Ù±íÎª£º" & Chr(10) & wb_fl.Name
+Msgbox "åˆ¶ä½œPRçš„è·Ÿè¸ªè¡¨ä¸ºï¼š" & Chr(10) & wb_fl.Name
 If wb_fl.ReadOnly = True Then
-Msgbox "Ö»¶Á¸ñÊ½µÄ¸ú×Ù±íÎŞ·¨ÖÆ×÷PR"
+Msgbox "åªè¯»æ ¼å¼çš„è·Ÿè¸ªè¡¨æ— æ³•åˆ¶ä½œPR"
 wb_fl.Close
 Exit Sub
 End If
 Else
-Msgbox "ÇëÏÈ´ò¿ª¸ú×Ù±í£º CN.*Mechanics*Following.xlsm "
+Msgbox "è¯·å…ˆæ‰“å¼€è·Ÿè¸ªè¡¨ï¼š CN.*Mechanics*Following.xlsm "
 Exit Sub
 End If
-'ÕÒµ½ÒÑ¾­´ò¿ªµÄ»úĞµ¸ú×Ù±í
+'æ‰¾åˆ°å·²ç»æ‰“å¼€çš„æœºæ¢°è·Ÿè¸ªè¡¨
 '=======================
 mokc.Item("FL").Item("FLN").Key = wb_fl.Name
 mokc.Item("FL").Item("FDN").Key = wb_fl.Path
@@ -3438,18 +3438,18 @@ If Right(mokc.Item("FL").Item("FDN").Key, 1) <> "\" Then
 mokc.Item("FL").Item("FDN").Key = mokc.Item("FL").Item("FDN").Key & "\"
 End If
 '=======================
-'Checking  ÎÄ¼ş¼ĞÊÇ·ñ´æÔÚ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
+'Checking  æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
 fdn = mokc.Item("FL").Item("FDN").Key & "PAX_Mechanical&H&P"
 mokc.Item("FL").Item("FDN").Item("FDNPR").Key = fdn
 If mfso.folderexists(fdn) = False Then
-If Msgbox("ÎÄ¼ş¼Ğ²»´æÔÚ:" & Chr(10) & fdn & Chr(10) & "ĞèÒª´´½¨µã OK ", vbOKCancel) = vbOK Then
+If Msgbox("æ–‡ä»¶å¤¹ä¸å­˜åœ¨:" & Chr(10) & fdn & Chr(10) & "éœ€è¦åˆ›å»ºç‚¹ OK ", vbOKCancel) = vbOK Then
 mfso.CreateFolder fdn
-Msgbox "ÒÑ¾­´´½¨ ÓÃÓÚ´æ·ÅPRµÄÎÄ¼ş¼Ğ:" & Chr(10) & mokc.Item("FL").Item("FDN").Key & "PAX_Mechanical&H&P" & Chr(10) & "ÇëÔÚ¸ÃÎÄ¼ş¼ĞÀïÃæ´æ·ÅÒ»ÕÅÈ·¶¨PRÆğÊ¼±àºÅµÄPRµ¥£¨Ä¬ÈÏ0001ºÅPRµ¥£©"
+Msgbox "å·²ç»åˆ›å»º ç”¨äºå­˜æ”¾PRçš„æ–‡ä»¶å¤¹:" & Chr(10) & mokc.Item("FL").Item("FDN").Key & "PAX_Mechanical&H&P" & Chr(10) & "è¯·åœ¨è¯¥æ–‡ä»¶å¤¹é‡Œé¢å­˜æ”¾ä¸€å¼ ç¡®å®šPRèµ·å§‹ç¼–å·çš„PRå•ï¼ˆé»˜è®¤0001å·PRå•ï¼‰"
 Else
 Exit Sub
 End If
 End If
-'Checking  ÎÄ¼ş¼ĞÊÇ·ñ´æÔÚ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
+'Checking  æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨ (mokc.Item("FL").Item("FDN").Item("FDNPR").Key)
 '=======================
 
 
@@ -3510,20 +3510,20 @@ mokc.Item("PR").Item("PRN_LAST").Key = s_PRN_LAST
 
 
 '=====================
-'¶ÁÈ¡ Part_single ±í¸ñ
-b_c = True ' b_c = True  Part_Single ¶ÁÈ¡³É¹¦£¬b_c = False  Part_Single ¶ÁÈ¡Ê§°Ü
+'è¯»å– Part_single è¡¨æ ¼
+b_c = True ' b_c = True  Part_Single è¯»å–æˆåŠŸï¼Œb_c = False  Part_Single è¯»å–å¤±è´¥
 mokc.Item("WS_PartSingle").Add "M_C_P", "M_C_P"
 'Record the pype: Controls or Mechanics or Pneumatics
-'²»´æÔÚ Parts_Single,Ê§°Ü
+'ä¸å­˜åœ¨ Parts_Single,å¤±è´¥
 If b_c Then
 If ws_exist(wb_fl, "Parts_Single") = False Then
 b_c = False
-Msgbox "Following list ,ÀïÃæ²»´æÔÚ¹¤×é±í Parts_Single"
+Msgbox "Following list ,é‡Œé¢ä¸å­˜åœ¨å·¥ç»„è¡¨ Parts_Single"
 Else
 Set ws_partsingle = wb_fl.Worksheets("Parts_Single")
 End If
 End If
-'ÎŞ·¨ÅĞ¶ÏÊÇ »ú or µç or Æø Ê§°Ü
+'æ— æ³•åˆ¤æ–­æ˜¯ æœº or ç”µ or æ°” å¤±è´¥
 If b_c Then
 If InStr(wb_fl.Name, "Mechanics") > 0 Then
 mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Mechanics"
@@ -3533,10 +3533,10 @@ ElseIf InStr(wb_fl.Name, "Pneumatics") > 0 Then
 mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Pneumatics"
 Else
 b_c = False
-Msgbox wb_fl.Name & Chr(10) & "Ãû³ÆÖĞ±ØĞë°üº¬ÒÔÏÂµ¥´ÊÖ®Ò»£ºMechanics »ò  Controls »ò Pneumatics"
+Msgbox wb_fl.Name & Chr(10) & "åç§°ä¸­å¿…é¡»åŒ…å«ä»¥ä¸‹å•è¯ä¹‹ä¸€ï¼šMechanics æˆ–  Controls æˆ– Pneumatics"
 End If
 End If
-'ÅĞ¶Ï Part_Single ¸ñÊ½ÊÇ·ñÊÇÔ¤ÖÃ¸ñÊ½
+'åˆ¤æ–­ Part_Single æ ¼å¼æ˜¯å¦æ˜¯é¢„ç½®æ ¼å¼
 If b_c Then
 If mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Mechanics" Then
 
@@ -3559,7 +3559,7 @@ If mokc.Item("WS_PartSingle").Item("M_C_P").Key = "Mechanics" Then
     If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 20, "Expect Week", "E_DATE") Then b_c = False
     If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 21, "description", "DESC") Then If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 21, "Description", "DESC") Then b_c = False
     If Not TableHead_REC(mokc.Item("WS_PartSingle").Item("WS_HEAD"), ws_partsingle, 8, 23, "MO ID", "MO ID") Then b_c = False
-    If b_c = False Then Msgbox "Part_Single ±íÍ·ÎŞ·¨Ê¶±ğ"
+    If b_c = False Then Msgbox "Part_Single è¡¨å¤´æ— æ³•è¯†åˆ«"
     
     
 End If
@@ -3571,7 +3571,7 @@ If b_c Then
 
 i_last = ws_partsingle.UsedRange.Rows(ws_partsingle.UsedRange.Rows.Count).row
 For i = 8 To i_last
-'¶ÁÈ¡ÊıÁ¿²»ÎªÁã£¬PA_Index Îª¿ÕµÄĞĞ
+'è¯»å–æ•°é‡ä¸ä¸ºé›¶ï¼ŒPA_Index ä¸ºç©ºçš„è¡Œ
 
 
 
@@ -3586,12 +3586,12 @@ TKID_STATION = Trim(ws_partsingle.Cells(i, CInt(mokc.Item("WS_PartSingle").Item(
 dbl_qty = 0
 Str_TO_Dbl QTY, dbl_qty
 If Not (dbl_qty > 0) Then
-Msgbox "ÇëĞŞ¸ÄÊıÁ¿£¬ÊıÁ¿±ØĞë´óÓÚÁãĞĞºÅ£º" & i
+Msgbox "è¯·ä¿®æ”¹æ•°é‡ï¼Œæ•°é‡å¿…é¡»å¤§äºé›¶è¡Œå·ï¼š" & i
 b_c = False
 End If
 If b_c Then
 If Len(OEM_NAME) = 0 Then
-Msgbox "¹©Ó¦ÉÌÃû³Æ²»ÄÜÎª¿Õ£¬ĞĞºÅ£º" & i
+Msgbox "ä¾›åº”å•†åç§°ä¸èƒ½ä¸ºç©ºï¼Œè¡Œå·ï¼š" & i
 b_c = False
 End If
 If b_c Then
@@ -3623,11 +3623,11 @@ End If
 End If
 Next
 End If
-'¶ÁÈ¡ Part_single ±í¸ñ
+'è¯»å– Part_single è¡¨æ ¼
 '=====================
 
 If b_c = False Then
-Msgbox "¶ÁÈ¡ Part_Single Ê§°Ü£¬ÎŞ·¨ÖÆ×÷PR"
+Msgbox "è¯»å– Part_Single å¤±è´¥ï¼Œæ— æ³•åˆ¶ä½œPR"
 Exit Sub
 End If
 
@@ -3636,39 +3636,39 @@ End If
 
 
 '=====================
-'¼ì²éPR Ä£°åÊÇ·ñ´æÔÚ£¬²»´æÔÚ¿½±´Ò»·İµ½µ±Ç°Ä¿Â¼
+'æ£€æŸ¥PR æ¨¡æ¿æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ‹·è´ä¸€ä»½åˆ°å½“å‰ç›®å½•
 'Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm
 If mfso.FileExists(mokc.Item("FL").Item("FDN").Key & "\010c1612_Purchase Requisition.xlsm") Then
 Else
  If mfso.FileExists("Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm") Then
  mfso.copy_file "Z:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm", mokc.Item("FL").Item("FDN").Key & "\010c1612_Purchase Requisition.xlsm"
  Else
- Msgbox "ÎŞ PRÄ£°å£ºZ:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm"
+ Msgbox "æ—  PRæ¨¡æ¿ï¼šZ:\24_Temp\PA_Logs\V1.1\TEMPLATE\010c1612_Purchase Requisition.xlsm"
  b_c = False
  End If
 End If
 mokc.Item("PR").Item("FLFP_TEMPLATE").Key = mokc.Item("FL").Item("FDN").Key & "\010c1612_Purchase Requisition.xlsm"
-'¼ì²éPR Ä£°åÊÇ·ñ´æÔÚ£¬²»´æÔÚ¿½±´Ò»·İµ½µ±Ç°Ä¿Â¼
+'æ£€æŸ¥PR æ¨¡æ¿æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ‹·è´ä¸€ä»½åˆ°å½“å‰ç›®å½•
 '=====================
 If b_c = False Then
-Msgbox "PR Ä£°å²»´æÔÚ£¬ÎŞ·¨ÖÆ×÷PR"
+Msgbox "PR æ¨¡æ¿ä¸å­˜åœ¨ï¼Œæ— æ³•åˆ¶ä½œPR"
 Exit Sub
 End If
 
 
 
 '==============================
-'¼ì²éÄ£°åÖĞÏîÄ¿ÃûÏîÄ¿ºÅÊÇ·ñ´æÔÚ£¬²»´æÔÚÒªÇóÊäÈë
+'æ£€æŸ¥æ¨¡æ¿ä¸­é¡¹ç›®åé¡¹ç›®å·æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨è¦æ±‚è¾“å…¥
 If open_wb(wb_pr, mokc.Item("PR").Item("FLFP_TEMPLATE").Key) Then
 str1 = wb_pr.Worksheets(1).Range("G7")
 Do While Len(str1) = 0
-str1 = InputBox("ÇëÊäÈëÏîÄ¿ºÅ", "PR Ä£°åĞÅÏ¢ÌîĞ´", "CN.#######")
+str1 = InputBox("è¯·è¾“å…¥é¡¹ç›®å·", "PR æ¨¡æ¿ä¿¡æ¯å¡«å†™", "CN.#######")
 If str1 = "CN.#######" Then str1 = ""
 Loop
 wb_pr.Worksheets(1).Range("G7") = str1
 str1 = wb_pr.Worksheets(1).Range("M7")
 Do While Len(str1) = 0
-str1 = InputBox("ÇëÊäÈëÏîÄ¿Ãû³Æ", "PR Ä£°åĞÅÏ¢ÌîĞ´")
+str1 = InputBox("è¯·è¾“å…¥é¡¹ç›®åç§°", "PR æ¨¡æ¿ä¿¡æ¯å¡«å†™")
 Loop
 wb_pr.Worksheets(1).Range("M7") = str1
 wb_pr.Save
@@ -3677,10 +3677,10 @@ wb_pr.Close
 Else
 b_c = False
 End If
-'¼ì²éÄ£°åÖĞÏîÄ¿ÃûÏîÄ¿ºÅÊÇ·ñ´æÔÚ£¬²»´æÔÚÒªÇóÊäÈë
+'æ£€æŸ¥æ¨¡æ¿ä¸­é¡¹ç›®åé¡¹ç›®å·æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨è¦æ±‚è¾“å…¥
 '==============================
 If b_c = False Then
-Msgbox "PR Ä£°å ÖĞÏîÄ¿Ãû³Æ£¬ºÍÏîÄ¿ºÅÎ´ÌîĞ´"
+Msgbox "PR æ¨¡æ¿ ä¸­é¡¹ç›®åç§°ï¼Œå’Œé¡¹ç›®å·æœªå¡«å†™"
 Exit Sub
 End If
 
@@ -3688,21 +3688,21 @@ End If
 
 
 '============================
-'MO ¼ì²é£¬Èç¹ûÊÇMO ½ö×÷MO
+'MO æ£€æŸ¥ï¼Œå¦‚æœæ˜¯MO ä»…ä½œMO
 Dim i_moid As Integer
 i_moid = 0
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = UNIT_check(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("MO ID").Key)
 If Len(str1) > 0 Then
 If my_cint(str1) = 0 And i_moid > 0 Then
-Msgbox "MO µ¥×ÓºÍ PX µ¥×Ó±ØĞë·Ö¿ªÏÂ£¡"
+Msgbox "MO å•å­å’Œ PX å•å­å¿…é¡»åˆ†å¼€ä¸‹ï¼"
 b_c = False
 Exit For
 End If
 If i_moid < my_cint(str1) Then
 i_moid = my_cint(str1)
 If i_moid > 999 Then
-Msgbox "MO ±àºÅ±ØĞëĞ¡ÓÚ999!"
+Msgbox "MO ç¼–å·å¿…é¡»å°äº999!"
 b_c = False
 Exit For
 End If
@@ -3710,28 +3710,28 @@ End If
 End If
 Next
 
-'MO ¼ì²é£¬Èç¹ûÊÇMO ½ö×÷MO
+'MO æ£€æŸ¥ï¼Œå¦‚æœæ˜¯MO ä»…ä½œMO
 '============================
 If b_c = False Then
-Msgbox "MO Check Error£¡ " & Chr(10) & "ĞĞºÅ:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "MO Check Errorï¼ " & Chr(10) & "è¡Œå·:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit Sub
 End If
 
 
 '===================
-'Èç¹ûÊÇMO£¬ÔòĞŞ¸Ä
+'å¦‚æœæ˜¯MOï¼Œåˆ™ä¿®æ”¹
 If i_moid > 0 Then
 mokc.Item("PR").Item("PRN_LAST").Key = CStr(i_moid * 10)
 mokc.Item("PR").Item("PRN_LAST").Key = Right("000" & mokc.Item("PR").Item("PRN_LAST").Key, 4)
 End If
-'Èç¹ûÊÇMO£¬ÔòĞŞ¸Ä
+'å¦‚æœæ˜¯MOï¼Œåˆ™ä¿®æ”¹
 '===================
 
 
 
 
 '============================
-'µ¥Î» ¼ì²é
+'å•ä½ æ£€æŸ¥
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = UNIT_check(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("UNIT").Key)
 If Len(str1) = 0 Then
@@ -3742,10 +3742,10 @@ mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("UNIT").Key = str1
 End If
 Next
 
-'µ¥Î» ¼ì²é
+'å•ä½ æ£€æŸ¥
 '============================
 If b_c = False Then
-Msgbox "µ¥Î»¼ì²é Ê§°Ü " & Chr(10) & "ĞĞºÅ:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "å•ä½æ£€æŸ¥ å¤±è´¥ " & Chr(10) & "è¡Œå·:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit Sub
 End If
 
@@ -3753,7 +3753,7 @@ End If
 
 
 '============================
-'¹©Ó¦ÉÌÃû³Æ ¼ì²é¼°·ÖÀà
+'ä¾›åº”å•†åç§° æ£€æŸ¥åŠåˆ†ç±»
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = OEM_NAME_check(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("OEM_NAME").Key)
 If Len(str1) = 0 Then
@@ -3772,37 +3772,37 @@ Else
 mokc.Item("PR").Item("OEM_NAME").Item(str1).Add CStr(i), CStr(i)
 End If
 Next
-'¹©Ó¦ÉÌÃû³Æ ¼ì²é¼°·ÖÀà
+'ä¾›åº”å•†åç§° æ£€æŸ¥åŠåˆ†ç±»
 '============================
 If b_c = False Then
-Msgbox "¶ÁÈ¡ ¹©Ó¦ÉÌ¼ì²é Ê§°Ü£¬ÎŞ·¨ÖÆ×÷PR" & Chr(10) & "ĞĞºÅ:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "è¯»å– ä¾›åº”å•†æ£€æŸ¥ å¤±è´¥ï¼Œæ— æ³•åˆ¶ä½œPR" & Chr(10) & "è¡Œå·:" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit Sub
 End If
 
 
 '============================
-'±ê×¼¼ş ºÍ ÆäËû PA ±ØĞë·Ö¿ªÏÂ
+'æ ‡å‡†ä»¶ å’Œ å…¶ä»– PA å¿…é¡»åˆ†å¼€ä¸‹
 If mokc.Item("PR").Item("OEM_NAME").Count = 2 And Not (mokc.Item("PR").Item("OEM_NAME").Item("N/A") Is Nothing) And Not (mokc.Item("PR").Item("OEM_NAME").Item("NA") Is Nothing) Then
 
 ElseIf mokc.Item("PR").Item("OEM_NAME").Count > 1 Then
 
 If Not (mokc.Item("PR").Item("OEM_NAME").Item("NA") Is Nothing) Then
-Msgbox "ĞĞºÅ£º" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("NA").Item(1).Key)).Key
+Msgbox "è¡Œå·ï¼š" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("NA").Item(1).Key)).Key
 b_c = False
 End If
 End If
-'±ê×¼¼ş ºÍ ÆäËû PA ±ØĞë·Ö¿ªÏÂ
+'æ ‡å‡†ä»¶ å’Œ å…¶ä»– PA å¿…é¡»åˆ†å¼€ä¸‹
 '============================
 If b_c = False Then
-Msgbox "±ê×¼¼ş(NA)£¬±ØĞëºÍ·Ç±ê×¼¼ş·Ö¿ªÏÂ"
+Msgbox "æ ‡å‡†ä»¶(NA)ï¼Œå¿…é¡»å’Œéæ ‡å‡†ä»¶åˆ†å¼€ä¸‹"
 Exit Sub
 End If
 
 
 
 '=====================
-'N/A Ö±½Ó ÌîĞ´ N/A
-'¹©Ó¦ÉÌÃû³Æ²»ÄÜ°üº¬ÌØÊâ×Ö·û
+'N/A ç›´æ¥ å¡«å†™ N/A
+'ä¾›åº”å•†åç§°ä¸èƒ½åŒ…å«ç‰¹æ®Šå­—ç¬¦
 If mokc.Item("PR").Item("OEM_NAME").Count > 1 Then
 If Not (mokc.Item("PR").Item("OEM_NAME").Item("N/A") Is Nothing) Then
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Item("N/A").Count
@@ -3822,12 +3822,12 @@ If InStr(str1, ":") > 0 Then b_c = False
 If InStr(str1, "?") > 0 Then b_c = False
 If b_c = False Then Exit For
 Next
-'N/A Ö±½Ó ÌîĞ´ N/A
-'¹©Ó¦ÉÌÃû³Æ²»ÄÜ°üº¬ÌØÊâ×Ö·û
+'N/A ç›´æ¥ å¡«å†™ N/A
+'ä¾›åº”å•†åç§°ä¸èƒ½åŒ…å«ç‰¹æ®Šå­—ç¬¦
 '=====================
-'¼ì²éPR Ä£°åÊÇ·ñ´æÔÚ£¬²»´æÔÚ¿½±´Ò»·İµ½µ±Ç°Ä¿Â¼
+'æ£€æŸ¥PR æ¨¡æ¿æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨æ‹·è´ä¸€ä»½åˆ°å½“å‰ç›®å½•
 If b_c = False Then
-Msgbox "¹©Ó¦ÉÌÃû³Æ°üº¬ÌØÊâ×Ö·û  \ / : * ? ÎŞ·¨ÖÆ×÷PR£¬ÇëĞŞ¸Ä£º" & str1
+Msgbox "ä¾›åº”å•†åç§°åŒ…å«ç‰¹æ®Šå­—ç¬¦  \ / : * ? æ— æ³•åˆ¶ä½œPRï¼Œè¯·ä¿®æ”¹ï¼š" & str1
 Exit Sub
 End If
 
@@ -3836,29 +3836,29 @@ End If
 
 
 '=================================
-'»ú¼Ó¼ş(TKSE) ±ØĞëÓĞÍ¼ºÅ
+'æœºåŠ ä»¶(TKSE) å¿…é¡»æœ‰å›¾å·
 If mokc.Item("PR").Item("OEM_NAME").Count > 0 Then
 If Not (mokc.Item("PR").Item("OEM_NAME").Item("TKSE") Is Nothing) Then
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Count
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Item("TKID").Key
 If Len(str1) = 0 Then
-Msgbox "»ú¼Ó¼ş±ØĞëÓĞÍ¼ºÅ,¸ú×Ù±íĞĞºÅ£º" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Key
+Msgbox "æœºåŠ ä»¶å¿…é¡»æœ‰å›¾å·,è·Ÿè¸ªè¡¨è¡Œå·ï¼š" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item("TKSE").Item(i).Key)).Key
 b_c = False
 End If
 Next
 End If
 End If
-'»ú¼Ó¼ş(TKSE) ±ØĞëÓĞÍ¼ºÅ
+'æœºåŠ ä»¶(TKSE) å¿…é¡»æœ‰å›¾å·
 '=================================
 If b_c = False Then
-Msgbox "»ú¼Ó¼ş(TKSE)ÎŞµÙÉ­Í¼ºÅ,ÎŞ·¨ÖÆ×÷PR"
+Msgbox "æœºåŠ ä»¶(TKSE)æ— è’‚æ£®å›¾å·,æ— æ³•åˆ¶ä½œPR"
 Exit Sub
 End If
 
 
 
 '=================================
-'·ÇNA£¬N/A¼ş£¬ĞÍºÅºÍTKID²»ÄÜÍ¬Ê±Îª¿Õ
+'éNAï¼ŒN/Aä»¶ï¼Œå‹å·å’ŒTKIDä¸èƒ½åŒæ—¶ä¸ºç©º
 For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("TKID").Key)
 str2 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("OEM_ID").Key)
@@ -3866,27 +3866,27 @@ str3 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("OEM_NAME").Key
 If (str3 <> "NA") And (str3 <> "N/A") Then
 If Len(str1) = 0 And Len(str2) = 0 Then
 b_c = False
-Msgbox "·Ç±ê¼ş£¬ĞÍºÅ£¬µÙÉ­ºÅ²»ÄÜÍ¬Ê±Îª¿Õ¡£¼ì²éĞĞ£º" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+Msgbox "éæ ‡ä»¶ï¼Œå‹å·ï¼Œè’‚æ£®å·ä¸èƒ½åŒæ—¶ä¸ºç©ºã€‚æ£€æŸ¥è¡Œï¼š" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
 Exit For
 End If
 End If
 Next
-'·ÇNA£¬N/A¼ş£¬ĞÍºÅºÍTKID²»ÄÜÍ¬Ê±Îª¿Õ
+'éNAï¼ŒN/Aä»¶ï¼Œå‹å·å’ŒTKIDä¸èƒ½åŒæ—¶ä¸ºç©º
 '=================================
 If b_c = False Then
-Msgbox "¶©»õºÅ²»ÄÜÎª¿Õ,ÎŞ·¨ÖÆ×÷PR"
+Msgbox "è®¢è´§å·ä¸èƒ½ä¸ºç©º,æ— æ³•åˆ¶ä½œPR"
 Exit Sub
 End If
 
 
 
 '=================================
-'NA ¼şÌØÊâ´¦Àí
+'NA ä»¶ç‰¹æ®Šå¤„ç†
 If mokc.Item("PR").Item("OEM_NAME").Count = 1 Then
 
 
     '=================================
-    'NA ¼ş ±ê×¼ºÅ²»ÄÜÎª¿Õ£¬SIZE²»ÄÜÎª¿Õ
+    'NA ä»¶ æ ‡å‡†å·ä¸èƒ½ä¸ºç©ºï¼ŒSIZEä¸èƒ½ä¸ºç©º
     For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
     str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("STANDARD").Key)
     str2 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("DIMENSION").Key)
@@ -3894,21 +3894,21 @@ If mokc.Item("PR").Item("OEM_NAME").Count = 1 Then
     If str3 = "NA" Then
     If Len(str1) = 0 Or Len(str2) = 0 Then
     b_c = False
-    Msgbox "·Ç±ê¼ş ±ê×¼ºÅ²»ÄÜÎª¿Õ£¬±ê×¼¼ş ¹æ¸ñ²»ÄÜÎª¿Õ¡£¼ì²éĞĞ£º" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
+    Msgbox "éæ ‡ä»¶ æ ‡å‡†å·ä¸èƒ½ä¸ºç©ºï¼Œæ ‡å‡†ä»¶ è§„æ ¼ä¸èƒ½ä¸ºç©ºã€‚æ£€æŸ¥è¡Œï¼š" & mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Key
     Exit For
     End If
     End If
     Next
-    'NA ¼ş ±ê×¼ºÅ²»ÄÜÎª¿Õ£¬SIZE²»ÄÜÎª¿Õ
+    'NA ä»¶ æ ‡å‡†å·ä¸èƒ½ä¸ºç©ºï¼ŒSIZEä¸èƒ½ä¸ºç©º
     '=================================
     If b_c = False Then
-    Msgbox "·Ç±ê¼ş NA ¼şÌîĞ´²»¹æ·¶(±ê×¼ºÅ£¬»ò¹æ¸ñÎª¿Õ) "
+    Msgbox "éæ ‡ä»¶ NA ä»¶å¡«å†™ä¸è§„èŒƒ(æ ‡å‡†å·ï¼Œæˆ–è§„æ ¼ä¸ºç©º) "
     Exit Sub
     End If
     
     
     '=================================
-    'NA ¼ş ±ê×¼ºÅ¸ñÊ½»¯£¬SIZE¸ñÊ½»¯,²¢Ìí¼ÓÖÁ¿â
+    'NA ä»¶ æ ‡å‡†å·æ ¼å¼åŒ–ï¼ŒSIZEæ ¼å¼åŒ–,å¹¶æ·»åŠ è‡³åº“
     For i = 1 To mokc.Item("WS_PartSingle").Item("WS_BODY").Count
     str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("STANDARD").Key)
     str2 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(i).Item("DIMENSION").Key)
@@ -3943,13 +3943,13 @@ If mokc.Item("PR").Item("OEM_NAME").Count = 1 Then
     End If
     End If
     Next
-    'NA ¼ş ±ê×¼ºÅ¸ñÊ½»¯£¬SIZE¸ñÊ½»¯
+    'NA ä»¶ æ ‡å‡†å·æ ¼å¼åŒ–ï¼ŒSIZEæ ¼å¼åŒ–
     '=================================
 
     '=================================
-    'NA ¼şĞÍºÅÈ¡ ±ê×¼ºÅ__¹æ¸ñ£¬ NA¼ş ±¸×¢ ÌîĞ´
+    'NA ä»¶å‹å·å– æ ‡å‡†å·__è§„æ ¼ï¼Œ NAä»¶ å¤‡æ³¨ å¡«å†™
     
-    'NA ¼şĞÍºÅÈ¡ ±ê×¼ºÅ__¹æ¸ñ£¬ NA¼ş ±¸×¢ ÌîĞ´
+    'NA ä»¶å‹å·å– æ ‡å‡†å·__è§„æ ¼ï¼Œ NAä»¶ å¤‡æ³¨ å¡«å†™
     '=================================
     
     
@@ -3960,7 +3960,7 @@ If mokc.Item("PR").Item("OEM_NAME").Count = 1 Then
     
     
 End If
-'NA ¼şÌØÊâ´¦Àí
+'NA ä»¶ç‰¹æ®Šå¤„ç†
 '=================================
 
 
@@ -3970,9 +3970,9 @@ End If
 
 
 '==============================
-'ÄÚ´æÖĞÖÆ×÷È«²¿PRµ¥×Ó
+'å†…å­˜ä¸­åˆ¶ä½œå…¨éƒ¨PRå•å­
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
-'Êä³öµ¥ÕÅPRµ¥
+'è¾“å‡ºå•å¼ PRå•
 
 
 
@@ -3998,12 +3998,12 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "C"
 
 
 'D
-'ShortText, »ú¼Ó¼ş TKID£¬Íâ¹º¼ş OEM_ID
-'1.»ú¼Ó¼ş=¡µTKID
-'2.Íâ¹º¼ş£¬Í¬Ê±ÓĞĞÍºÅ£¬ÓÖÓĞTKID,£¨×ö·¨£ºDÁĞĞÍºÅ£¬TKIDºÍÆäËûÄÚÈİºÏ²¢ÈëMEMO£©
-'3.Íâ¹º¼ş£¬½öÓĞĞÍºÅ
-'4.Íâ¹º¼ş£¬½öÓĞTKID
-'5.Íâ¹º¼ş£ºÃ»ĞÍºÅÒ²Ã»ÓĞTKID
+'ShortText, æœºåŠ ä»¶ TKIDï¼Œå¤–è´­ä»¶ OEM_ID
+'1.æœºåŠ ä»¶=ã€‰TKID
+'2.å¤–è´­ä»¶ï¼ŒåŒæ—¶æœ‰å‹å·ï¼Œåˆæœ‰TKID,ï¼ˆåšæ³•ï¼šDåˆ—å‹å·ï¼ŒTKIDå’Œå…¶ä»–å†…å®¹åˆå¹¶å…¥MEMOï¼‰
+'3.å¤–è´­ä»¶ï¼Œä»…æœ‰å‹å·
+'4.å¤–è´­ä»¶ï¼Œä»…æœ‰TKID
+'5.å¤–è´­ä»¶ï¼šæ²¡å‹å·ä¹Ÿæ²¡æœ‰TKID
 str1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Key
 If str1 = "TKSE" Then
     str2 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID").Key
@@ -4024,19 +4024,19 @@ End If
 
 
 'E
-'Ö±½Ó½«TKID_SUBASSÌîÈë
+'ç›´æ¥å°†TKID_SUBASSå¡«å…¥
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID_SUBASS").Key
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "E"
 
 'F
-'Ö±½Ó½«OEM_NAME ÌîÈë
+'ç›´æ¥å°†OEM_NAME å¡«å…¥
 str1 = mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("OEM_NAME").Key
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "F"
 
 'G
-'Ãû³Æ
-'1.»ú¼Ó¼ş.TKID**Ãû³Æ
-'2.Íâ¹º¼ş.Ãû³Æ
+'åç§°
+'1.æœºåŠ ä»¶.TKID**åç§°
+'2.å¤–è´­ä»¶.åç§°
 str1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Key
 If str1 = "TKSE" Then
 str2 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID").Key)
@@ -4054,7 +4054,7 @@ End If
 
 'H
 'CostUnit
-'Ê¹ÓÃ ¸ú×Ù±íÃû³Æ×ó±ß4Î» CN.3  & ¹¤Î»ºÅÄÚÏîÄ¿Ãû & 41 & ¹¤Î»ºÅÄÚ¹¤Î»Ãû
+'ä½¿ç”¨ è·Ÿè¸ªè¡¨åç§°å·¦è¾¹4ä½ CN.3  & å·¥ä½å·å†…é¡¹ç›®å & 41 & å·¥ä½å·å†…å·¥ä½å
 str1 = Left(wb_fl.Name, 4)
 str2 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID_STATION").Key)
 str2 = Left(str2, 11)
@@ -4064,13 +4064,13 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str3, "H"
 
 
 'I
-'ÊıÁ¿
+'æ•°é‡
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("QTY").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "I"
 
 
 'J
-'µ¥Î»
+'å•ä½
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("UNIT").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "J"
 
@@ -4106,8 +4106,8 @@ End If
 
 
 
-'N·¢»õÆÚ
-'¸÷ÖÖÈÕÆÚ¸ñÊ½×ª»»
+'Nå‘è´§æœŸ
+'å„ç§æ—¥æœŸæ ¼å¼è½¬æ¢
 str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("E_DATE").Key)
 mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "N"
 
@@ -4115,12 +4115,12 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add str1, "N"
 
 
 
-'O±¸×¢
-'¸÷ÖÖÇé¿ö±¸×¢
-'1.»ú¼Ó¼ş£¨TKSE£©£¬¹æ¸ñ**Description
-'2.Íâ¹º¼ş, TKID**¹æ¸ñ**Description
-'3.NA ¼ş TKID **Manuf.Part.No. & Basic Material
-'4.MO ¼ş Description + MO ºÅÂë
+'Oå¤‡æ³¨
+'å„ç§æƒ…å†µå¤‡æ³¨
+'1.æœºåŠ ä»¶ï¼ˆTKSEï¼‰ï¼Œè§„æ ¼**Description
+'2.å¤–è´­ä»¶, TKID**è§„æ ¼**Description
+'3.NA ä»¶ TKID **Manuf.Part.No. & Basic Material
+'4.MO ä»¶ Description + MO å·ç 
 
 str1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Key
 If str1 = "TKSE" Then
@@ -4174,7 +4174,7 @@ End If
 Next
 
 
-'PRµ¥ºÅ¼Ó1
+'PRå•å·åŠ 1
 i_PRN_LAST = CInt(mokc.Item("PR").Item("PRN_LAST").Key)
 i_PRN_LAST = i_PRN_LAST + 1
 s_PRN_LAST = CStr(i_PRN_LAST)
@@ -4182,25 +4182,25 @@ If Len(s_PRN_LAST) < 4 Then
 s_PRN_LAST = Left("000", 4 - Len(s_PRN_LAST)) & s_PRN_LAST
 End If
 mokc.Item("PR").Item("PRN_LAST").Key = s_PRN_LAST
-'PRµ¥ºÅ¼Ó1
+'PRå•å·åŠ 1
 
  
 
 Next
-'ÄÚ´æÖĞÖÆ×÷È«²¿PRµ¥×Ó
+'å†…å­˜ä¸­åˆ¶ä½œå…¨éƒ¨PRå•å­
 '==============================
 
-'20181021 PR°´ĞÍºÅÅÅĞò
+'20181021 PRæŒ‰å‹å·æ’åº
 'sort_pr mokc
 
-'20181021 PR°´ĞÍºÅÅÅĞò
+'20181021 PRæŒ‰å‹å·æ’åº
 
 
 '====================================
-'µ¥Ôª¸ñ³¤¶È½öÔÊĞí35£¬ÒıÆğµÄ¶Ô mokc.Item("PR").Item("OEM_NAME") µÄ´¦Àí
-'DÁĞ³¬³¤ ÓÃ..Á¬½ÓÖÁ£¬OÁĞ
-'GÁĞ³¬³¤ ÓÃ##Á¬½ÓÖÁ£¬OÁĞ
-'OÁĞ³¬³¤ ÓÃ^^ºÍÇ°ÃæµÄ·Ö¿ª£¬ÆäÓà·ÅÈë ×¢ÊÍ
+'å•å…ƒæ ¼é•¿åº¦ä»…å…è®¸35ï¼Œå¼•èµ·çš„å¯¹ mokc.Item("PR").Item("OEM_NAME") çš„å¤„ç†
+'Dåˆ—è¶…é•¿ ç”¨..è¿æ¥è‡³ï¼ŒOåˆ—
+'Gåˆ—è¶…é•¿ ç”¨##è¿æ¥è‡³ï¼ŒOåˆ—
+'Oåˆ—è¶…é•¿ ç”¨^^å’Œå‰é¢çš„åˆ†å¼€ï¼Œå…¶ä½™æ”¾å…¥ æ³¨é‡Š
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
 For j = 1 To mokc.Item("PR").Item("OEM_NAME").Item(i).Count
 s_t1 = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("D").Key
@@ -4235,7 +4235,7 @@ mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Add s_t4, "Comment"
 End If
 Next
 Next
-'µ¥Ôª¸ñ³¤¶È½öÔÊĞí35£¬ÒıÆğµÄ¶Ô mokc.Item("PR").Item("OEM_NAME") µÄ´¦Àí
+'å•å…ƒæ ¼é•¿åº¦ä»…å…è®¸35ï¼Œå¼•èµ·çš„å¯¹ mokc.Item("PR").Item("OEM_NAME") çš„å¤„ç†
 '====================================
 
 
@@ -4246,13 +4246,13 @@ Next
 
 
 '==============================
-'ÄÚ´æÖĞPRµ¥£¬´æÖÁ´ÅÅÌPRÎÄ¼ş
-'´ò¿ªÄ£°å
+'å†…å­˜ä¸­PRå•ï¼Œå­˜è‡³ç£ç›˜PRæ–‡ä»¶
+'æ‰“å¼€æ¨¡æ¿
 
 
 For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
-'PRµ¥ÎÄ¼şÃû£ºPX1515_CN.305587-8-9_Spare parts_20170725.xlsm
-'PRµ¥ÎÄ¼şÃû£ºPX####_CN.######_OEM_NAME_YYYYMMDD.xlsm
+'PRå•æ–‡ä»¶åï¼šPX1515_CN.305587-8-9_Spare parts_20170725.xlsm
+'PRå•æ–‡ä»¶åï¼šPX####_CN.######_OEM_NAME_YYYYMMDD.xlsm
 str1 = Left(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(1).Item("C").Key, 6)
 
 
@@ -4269,10 +4269,10 @@ wb_pr.Worksheets(1).Range("O7") = str1
 
 
 '=======================================
-'¸üÕıµ¥Ôª¸ñ£ºName of component .TK Internal Ident. number
+'æ›´æ­£å•å…ƒæ ¼ï¼šName of component .TK Internal Ident. number
 wb_pr.Worksheets(1).Range("D20") = "Vendor Part No."
 wb_pr.Worksheets(1).Range("G20") = "Name of component .TK Internal Ident. number"
-'¸üÕıµ¥Ôª¸ñ£ºName of component .TK Internal Ident. number
+'æ›´æ­£å•å…ƒæ ¼ï¼šName of component .TK Internal Ident. number
 '=======================================
 
 
@@ -4293,8 +4293,8 @@ wb_pr.Worksheets(1).Range("M3") = str1
 
 
 
-'ÏàÍ¬WBS£¬SHORTTEXT ĞèÒªºÏ²¢ÊıÁ¿£¬²ÉÈ¡µÄ²ßÂÔÊÇ£¬ÔÚÍùÎÄ¼şÖĞĞ´µÄ×îºóÒ»²½½« ¼ì²éÊÇ·ñ¿ÉÒÔºÏ²¢£¬¿ÉÒÔºÏ²¢ÔòºÏ²¢
-'i_PRN_LAST s_PRN_LAST ÊµÊ±¿ØÖÆPRµÄÌîĞ´ÄÚÈİ£¬ÎŞÊÓÔ­Ê¼Öµ
+'ç›¸åŒWBSï¼ŒSHORTTEXT éœ€è¦åˆå¹¶æ•°é‡ï¼Œé‡‡å–çš„ç­–ç•¥æ˜¯ï¼Œåœ¨å¾€æ–‡ä»¶ä¸­å†™çš„æœ€åä¸€æ­¥å°† æ£€æŸ¥æ˜¯å¦å¯ä»¥åˆå¹¶ï¼Œå¯ä»¥åˆå¹¶åˆ™åˆå¹¶
+'i_PRN_LAST s_PRN_LAST å®æ—¶æ§åˆ¶PRçš„å¡«å†™å†…å®¹ï¼Œæ— è§†åŸå§‹å€¼
 i_PRN_LAST = 1
 s_PRN_LAST = "1"
 Dim i_curr As Integer
@@ -4395,11 +4395,11 @@ If b_c Then
             wb_pr.Worksheets(1).Rows(20 + i_curr & ":" & 20 + i_curr).Interior.Color = 255
             End If
             
-            'ÔÚ×Ü±íÀïÃæ¼ÇÂ¼PRºÅ
+            'åœ¨æ€»è¡¨é‡Œé¢è®°å½•PRå·
             'ws_partsingle.Cells(CInt(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Key), CInt(mokc.Item("WS_PartSingle").Item("WS_HEAD").Item("PA_Index").Item(1).Key)) = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("C").Key
             ws_partsingle.Cells(CInt(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Key), CInt(mokc.Item("WS_PartSingle").Item("WS_HEAD").Item("PA_Index").Item(1).Key)) = mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Item("C").Key
             
-                       'ÔÚ×Ü±íÀïÃæ¼ÇÂ¼PRºÅ
+                       'åœ¨æ€»è¡¨é‡Œé¢è®°å½•PRå·
 End If
 
 
@@ -4411,16 +4411,16 @@ wb_pr.Close
 
 Next
 
-'ÄÚ´æÖĞPRµ¥£¬´æÖÁ´ÅÅÌPRÎÄ¼ş
+'å†…å­˜ä¸­PRå•ï¼Œå­˜è‡³ç£ç›˜PRæ–‡ä»¶
 ''==============================
 
 
 wb_fl.Save
 
 
-'´ò¿ªÎÄ¼ş¼Ğ
+'æ‰“å¼€æ–‡ä»¶å¤¹
 Shell "explorer.exe " & mokc.Item("FL").Item("FDN").Item("FDNPR").Key, vbNormalFocus
-'´ò¿ªÎÄ¼ş¼Ğ
+'æ‰“å¼€æ–‡ä»¶å¤¹
 
 
 End Sub
@@ -4428,7 +4428,7 @@ End Sub
 
 
 Function sort_pr(mokc As OneKeyCls) As Boolean
-'±¾º¯ÊıÓÃÓÚÍê³ÉPRµ¥×ÓÄÚÈİµÄ°´Ãû³ÆÅÅĞò
+'æœ¬å‡½æ•°ç”¨äºå®ŒæˆPRå•å­å†…å®¹çš„æŒ‰åç§°æ’åº
 
 
  Dim i As Integer, j As Integer, k As Integer, i_min As Integer, kk As Integer
@@ -4446,16 +4446,16 @@ Function sort_pr(mokc As OneKeyCls) As Boolean
  
  If mokc.Item("FL").Item("FLN").Key Like "*Mechanics*" Or mokc.Item("FL").Item("FLN").Key Like "*Controls*" Or mokc.Item("FL").Item("FLN").Key Like "*Pneumatics*" Then
  For i = 1 To mokc.Item("PR").Item("OEM_NAME").Count
- 'Ñ­»·È«²¿µÄ¹©Ó¦ÉÌ
+ 'å¾ªç¯å…¨éƒ¨çš„ä¾›åº”å•†
  For j = 1 To mokc.Item("PR").Item("OEM_NAME").Item(i).Count
  If mokc.Item("PR").Item("OEM_NAME").Item(i).Count > 2 Then
- 'ÖÁÉÙÓĞ3Ìõ²ÅÓĞ¿ÉÄÜÅÅĞò
-    'Ñ­»·È«²¿µÄÌõÄ¿
+ 'è‡³å°‘æœ‰3æ¡æ‰æœ‰å¯èƒ½æ’åº
+    'å¾ªç¯å…¨éƒ¨çš„æ¡ç›®
     i_min = j
     b_swi = False
     s_min = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("TKID").Key) & Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(j).Key)).Item("OEM_ID").Key)
     For k = j + 1 To mokc.Item("PR").Item("OEM_NAME").Item(i).Count
-    'µ±Ç°ÌõºÍºóÃæµÄËùÓĞÌõ±È½Ï´óĞ¡£¬Èç¹û·¢ÏÖµ±Ç°ÌõÊÇ×îĞ¡µÄ£¬Ôò²»¶¯£¬Èç¹û·¢ÏÖ²»ÊÇ×îĞ¡µÄ£¬Ôò°Ñ×îĞ¡µÄ»»µ½µ±Ç°Î»ÖÃ
+    'å½“å‰æ¡å’Œåé¢çš„æ‰€æœ‰æ¡æ¯”è¾ƒå¤§å°ï¼Œå¦‚æœå‘ç°å½“å‰æ¡æ˜¯æœ€å°çš„ï¼Œåˆ™ä¸åŠ¨ï¼Œå¦‚æœå‘ç°ä¸æ˜¯æœ€å°çš„ï¼Œåˆ™æŠŠæœ€å°çš„æ¢åˆ°å½“å‰ä½ç½®
     str1 = Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(k).Key)).Item("TKID").Key) & Trim(mokc.Item("WS_PartSingle").Item("WS_BODY").Item(CInt(mokc.Item("PR").Item("OEM_NAME").Item(i).Item(k).Key)).Item("OEM_ID").Key)
     If str1 < s_min Then
     s_min = str1
@@ -4488,7 +4488,7 @@ Exit Function
 End If
 Dim str2 As String
 str2 = "Z:\24_Temp\PA_Logs\TOOLS\EXCEL_ADDIN\VISABLE\" & str1 & "#" & Application.UserName & ".txt"
-Open str2 For Append As #1         ' ´ò¿ªÊä³öÎÄ¼ş¡£
+Open str2 For Append As #1         ' æ‰“å¼€è¾“å‡ºæ–‡ä»¶ã€‚
 Print #1, Now()
 Close #1
 Const sAddinServerPath As String = "Z:\24_Temp\PA_Logs\TOOLS\EXCEL_ADDIN\MY_TOOL.xlam"
@@ -4541,7 +4541,7 @@ End Function
 
 Private Function Read_Main_to_PS(wb As Workbook) As Boolean
 
-'Èç¹û ÓĞ¶ÁÈ¡ÄÚÈİÔò£¬ÖÕÖ¹ ÖÆ×÷PR¹ı³Ì£¬ÈÃ¹¤³ÌÊ¦¼ì²é ´ÓMainÌí¼ÓÖÁPartSingleµÄÄÚÈİ
+'å¦‚æœ æœ‰è¯»å–å†…å®¹åˆ™ï¼Œç»ˆæ­¢ åˆ¶ä½œPRè¿‡ç¨‹ï¼Œè®©å·¥ç¨‹å¸ˆæ£€æŸ¥ ä»Mainæ·»åŠ è‡³PartSingleçš„å†…å®¹
 Dim ws1 As Worksheet, ws2 As Worksheet
 Dim i As Long, i_last As Long, j As Integer, j_last As Integer, k As Long, k_last As Long, ii As Long, jj As Long, kk As Long, ii_last As Long
 
@@ -4572,7 +4572,7 @@ Else
 Set ws2 = get_ws(wb, "Parts_Single")
 End If
 
-'¸ñÊ½»¯±í¸ñ£¬ABÁĞ general £¬HÈÕÆÚ
+'æ ¼å¼åŒ–è¡¨æ ¼ï¼ŒABåˆ— general ï¼ŒHæ—¥æœŸ
 i_last = ws1.UsedRange.Rows(ws1.UsedRange.Rows.Count).row
 ws1.Range("A9:B" & i_last).NumberFormat = "General"
 ws1.Range("H9:H" & i_last).NumberFormat = "[$-409]d-mmm-yy;@"
@@ -4584,14 +4584,14 @@ str1 = ws1.Range("B" & i)
 str2 = ws1.Range("G" & i)
 str3 = format_date_DDMMYYYY(ws1.Range("H" & i))
 If Len(str1) > 0 And Len(str2) = 0 Then
-'Èç¹ûµ½»õÆÚ ÎŞ·¨Ê¶±ğ£¬ÖÕÖ¹³ÌĞòÒªÇóÌîĞ´µ½»õÆÚ
+'å¦‚æœåˆ°è´§æœŸ æ— æ³•è¯†åˆ«ï¼Œç»ˆæ­¢ç¨‹åºè¦æ±‚å¡«å†™åˆ°è´§æœŸ
 If Len(str3) = 0 Then
 Read_Main_to_PS = True
 ws1.Range("H" & i).Interior.Color = RGB(255, 0, 0)
 add_comment "Date Error", ws1.Range("H" & i)
-'¹ö¶¯µ½±¨¾¯Î»ÖÃ
+'æ»šåŠ¨åˆ°æŠ¥è­¦ä½ç½®
 rg_scrowll ws1.Range("H" & i)
-'¹ö¶¯µ½±¨¾¯Î»ÖÃ
+'æ»šåŠ¨åˆ°æŠ¥è­¦ä½ç½®
 Exit Function
 ElseIf str3 Like "??.??.????" Then
 date1 = CDate(Right(str3, 4) & "-" & Mid(str3, 4, 2) & "-" & Left(str3, 2))
@@ -4600,9 +4600,9 @@ If date1 - date2 < -1 Then
 ws1.Range("H" & i).Interior.Color = RGB(255, 0, 0)
 add_comment "Date Error:Date past!", ws1.Range("H" & i)
 Read_Main_to_PS = True
-'¹ö¶¯µ½±¨¾¯Î»ÖÃ
+'æ»šåŠ¨åˆ°æŠ¥è­¦ä½ç½®
 rg_scrowll ws1.Range("H" & i)
-'¹ö¶¯µ½±¨¾¯Î»ÖÃ
+'æ»šåŠ¨åˆ°æŠ¥è­¦ä½ç½®
 Exit Function
 End If
 End If
@@ -4620,7 +4620,7 @@ Next
 
 
 
-'¼ì²éBOMÊÇ·ñ´æÔÚ£¬¼°ÊÇ·ñ¿ÉÒÔÊ¶±ğ
+'æ£€æŸ¥BOMæ˜¯å¦å­˜åœ¨ï¼ŒåŠæ˜¯å¦å¯ä»¥è¯†åˆ«
 For i = 1 To mokc.Count
 str1 = mokc.Item(i).Item("F").Key
 If Right(str1, 1) <> "\" Then str1 = str1 & "\"
@@ -4641,7 +4641,7 @@ Else
 '
 End If
 
-'ÓĞ´íÎó£¬ÖÕÖ¹
+'æœ‰é”™è¯¯ï¼Œç»ˆæ­¢
 If Len(mtkbom.Bom_Error(mokc.Item(i).Item("C").Key)) > 0 Then
 'Msgbox "BOM CHECK ERROR:" & mokc.Item(i).Item("C").Key
 ws1.Activate
@@ -4651,25 +4651,25 @@ add_comment mtkbom.Bom_Error(mokc.Item(i).Item("C").Key), ws1.Range("C" & mokc.I
 Read_Main_to_PS = True
 Exit Function
 End If
-'ÓĞ´íÎó£¬ÖÕÖ¹
+'æœ‰é”™è¯¯ï¼Œç»ˆæ­¢
 
 
 End If
 Next
-'¼ì²éBOMÊÇ·ñ´æÔÚ£¬¼°ÊÇ·ñ¿ÉÒÔÊ¶±ğ
+'æ£€æŸ¥BOMæ˜¯å¦å­˜åœ¨ï¼ŒåŠæ˜¯å¦å¯ä»¥è¯†åˆ«
 
 
 
-'ÌîĞ´£Ğ£á£ò£ô£Ó£é£î£ç£ì£å
+'å¡«å†™ï¼°ï½ï½’ï½”ï¼³ï½‰ï½ï½‡ï½Œï½…
 
 k_last = ws2.UsedRange.Rows(ws2.UsedRange.Rows.Count).row
-ii_last = k_last + 1 '¼ÇÏÂÆğÊ¼Î»ÖÃ
+ii_last = k_last + 1 'è®°ä¸‹èµ·å§‹ä½ç½®
 
 
 For i = 1 To mokc.Count
 
 str1 = mokc.Item(i).Item("C").Key
-'str1 ²¿Ì×ºÅ£Â£Ï£Í£Ô£Ë£É£Ä
+'str1 éƒ¨å¥—å·ï¼¢ï¼¯ï¼­ï¼´ï¼«ï¼©ï¼¤
 
 j_last = mtkbom.get_bom_Body_Count(str1)
 For j = 1 To j_last
@@ -4681,7 +4681,7 @@ str3 = mtkbom.get_bom_Body(str1, "bomitem_manu", j)
 If Len(str2) > 0 And Len(str3) > 0 Then
 
 k_last = k_last + 1
-'A~S ÁĞ¸³Öµ
+'A~S åˆ—èµ‹å€¼
 str4 = mtkbom.get_bom_Body(str1, "bomitem_pos", j)
 If Len(str4) > 0 Then
 ws2.Range("A" & k_last) = str4
@@ -4756,7 +4756,7 @@ End If
 ws2.Range("S" & k_last) = CDate(Format(Now(), "YYYY/mm/dd"))
 str6 = mokc.Item(i).Item("H").Key
 ws2.Range("T" & k_last) = CDate(Right(str6, 4) & "-" & Mid(str6, 4, 2) & "-" & Left(str6, 2))
-'A~S ÁĞ¸³Öµ
+'A~S åˆ—èµ‹å€¼
 Else
 End If
 Next
@@ -4764,7 +4764,7 @@ Next
 ws1.Range("G" & mokc.Item(i).Key) = "Done"
 
 Next
-'ÌîĞ´£Ğ£á£ò£ô£Ó£é£î£ç£ì£å
+'å¡«å†™ï¼°ï½ï½’ï½”ï¼³ï½‰ï½ï½‡ï½Œï½…
 
 
 If k_last > ii_last Then ws2.Range("A" & ii_last & ":R" & k_last).NumberFormat = "General"
@@ -4791,10 +4791,10 @@ str1 = wb.FullName
 str2 = wb.Name
 str3 = "Z:\24_Temp\PA_Logs\PR\PR_Create_Tool\BACKUP\CW" & Application.WeekNum(Now()) & Format(Now(), "_YYYY") & "\"
 If mfso.FileExists(str3 & str2) = False Then
-'±¸·İ
+'å¤‡ä»½
 mfso.CreateFolder str3
 mfso.copy_file str1, str3 & str2
-'±¸·İ
+'å¤‡ä»½
 End If
 End Function
 Private Function get_followinglist(wb As Workbook) As Boolean
