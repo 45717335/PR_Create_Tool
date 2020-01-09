@@ -9,4 +9,4 @@
 ``` vba
 Function rg_scrowll(rg As Range)
 ```
-[函数位置](Z:\24_Temp\PA_Logs\PR\PR_Create_Tool\src\PR_Create_Tool.xlsm\Excel_VBA.bas "所在模块")
+信息[函数位置](Z:\24_Temp\PA_Logs\PR\PR_Create_Tool\src\PR_Create_Tool.xlsm\Excel_VBA.bas "所在模块")
